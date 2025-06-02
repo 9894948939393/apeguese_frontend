@@ -20,7 +20,7 @@ useEffect(() => {
   }, [location.pathname]);
 
 useEffect(() => {
-    axios.get('${API_URL}/api/hello')//conexão com o backend
+    axios.get(`${API_URL}/api/hello`)//conexão com o backend
       .then(res => setMensagem(res.data.message))
       .catch(err => console.error(err));
   }, []);
@@ -28,7 +28,7 @@ useEffect(() => {
     navigate('/main');
   };
   const carregarPerfil = () => {
-    fetch('${API_URL}/perfil', {
+    fetch(`${API_URL}/perfil`, {
       method: "GET",
       credentials: 'include'
     }) 

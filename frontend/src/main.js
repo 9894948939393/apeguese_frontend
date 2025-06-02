@@ -54,7 +54,7 @@ useEffect(() => {
   };
 
   useEffect(() => {
-    fetch('${API_URL}/produtos') 
+    fetch(`${API_URL}/produtos`) 
       .then(response => {
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
@@ -77,7 +77,7 @@ useEffect(() => {
 
     const formData = new FormData(event.target);
 
-    fetch('${API_URL}/selecionar_produto', {
+    fetch(`${API_URL}/selecionar_produto`, {
       method: 'POST',
       body: formData,
       mode: 'cors',
@@ -113,7 +113,7 @@ useEffect(() => {
 
     const formData = new FormData(event.target);
 
-    fetch('${API_URL}/adicionar_carrinho', {
+    fetch(`${API_URL}/adicionar_carrinho`, {
       method: 'POST',
       body: formData,
       mode: 'cors',
@@ -148,7 +148,7 @@ useEffect(() => {
 
     const formData = new FormData(event.target);
 
-    fetch('${API_URL}/adicionar_favoritos', {
+    fetch(`${API_URL}/adicionar_favoritos`, {
       method: 'POST',
       body: formData,
       mode: 'cors',
@@ -176,7 +176,7 @@ useEffect(() => {
 
     const formData = new FormData(event.target);
 
-    fetch('${API_URL}/mostrar_carrinho', {
+    fetch(`${API_URL}/mostrar_carrinho`, {
       method: 'POST',
       body: formData,
       mode: 'cors',
@@ -226,7 +226,7 @@ useEffect(() => {
     
         const formData = new FormData(event.target);
     
-        fetch('${API_URL}/mostrar_pedidos', {
+        fetch(`${API_URL}/mostrar_pedidos`, {
           method: 'POST',
           body: formData,
           mode: 'cors',
@@ -287,7 +287,7 @@ useEffect(() => {
     
         const formData = new FormData(event.target);
     
-        fetch('${API_URL}/deletar_carrinho', {
+        fetch(`${API_URL}/deletar_carrinho`, {
           method: 'POST',
           body: formData,
           mode: 'cors',
@@ -316,7 +316,7 @@ useEffect(() => {
         
             const formData = new FormData(event.target);
         
-            fetch('${API_URL}/ir_pedido', {
+            fetch(`${API_URL}/ir_pedido`, {
               method: 'POST',
               body: formData,
               mode: 'cors',
@@ -367,7 +367,7 @@ useEffect(() => {
         
             const formData = new FormData(event.target);
         
-            fetch('${API_URL}/finalizar_pedido', {
+            fetch(`${API_URL}/finalizar_pedido`, {
               method: 'POST',
               body: formData,
               mode: 'cors',
@@ -426,7 +426,7 @@ useEffect(() => {
     
         const formData = new FormData(event.target);
     
-        fetch('${API_URL}/alterar_endereco', {
+        fetch(`${API_URL}/alterar_endereco`, {
           method: 'POST',
           body: formData,
           mode: 'cors',

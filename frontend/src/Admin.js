@@ -25,22 +25,7 @@ function Admin() {
         }, [location.pathname]);
   
     useEffect(() => {
-      fetch('${API_URL}.com')
-        .then(response => {
-          if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-          }
-          return response.json();
-        })
-        .then(data => {
-          console.log('Dados recebidos da API Flask:', data);
-        })
-        .catch(error => {
-          console.error('Erro ao buscar dados da API Flask:', error);
-        });
-    }, []);
-    useEffect(() => {
-      fetch('${API_URL}.com')
+      fetch(`${API_URL}`)
         .then(response => {
           if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
@@ -60,7 +45,7 @@ function Admin() {
   
       const formData = new FormData(event.target);
   
-      fetch('${API_URL}.com/adicionar_produto', {
+      fetch(`${API_URL}/adicionar_produto`, {
         method: 'POST',
         body: formData,
         mode: 'cors',
@@ -94,7 +79,7 @@ function Admin() {
   
       const formData = new FormData(event.target);
   
-      fetch('${API_URL}.com/atualizar_preco', {
+      fetch(`${API_URL}/atualizar_preco`, {
         method: 'POST',
         body: formData,
         mode: 'cors',
@@ -123,7 +108,7 @@ function Admin() {
     };
 
     useEffect(() => {
-      fetch('${API_URL}.com/produtos') 
+      fetch(`${API_URL}/produtos`) 
         .then(response => {
           if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
@@ -138,7 +123,7 @@ function Admin() {
         });
     }, []);
     useEffect(() => {
-        fetch('${API_URL}.com/pedidos') 
+        fetch(`${API_URL}/pedidos`) 
           .then(response => {
             if (!response.ok) {
               throw new Error(`HTTP error! status: ${response.status}`);
@@ -157,7 +142,7 @@ function Admin() {
   
       const formData = new FormData(event.target);
   
-      fetch('${API_URL}.com/deletar_produto', {
+      fetch(`${API_URL}/deletar_produto`, {
         method: 'POST',
         body: formData,
         mode: 'cors',
