@@ -1,0 +1,55 @@
+.barraAdmin{
+    width: 100vw;
+    height: 10vh;
+    position: absolute;
+    left: 0%;
+    bottom: 0%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .barraAdmin button{
+    height: 8vh;
+    width: auto;
+    align-items: center;
+    justify-content: center;
+  }
+  .barraAdmin img{
+    height: 6vh;
+    width: auto;
+  }
+  .divEditar{
+    display: flex;
+    position: absolute;
+    flex-direction: column;
+    color: white;
+    left: 0vw;
+    top: 10vh;
+    overflow-y: auto;
+    width: 100vw;
+    height: 50vh;
+  }
+  .divEditar::-webkit-scrollbar {
+    width: 0px;
+  }
+  .divEditar button{
+    color: white;
+}
+  .divCriar{
+    display: flex;
+    position: absolute;
+    flex-direction: column;
+    left: 0vw;
+    top: 10vh;
+    overflow-y: auto;
+    width: 100vw;
+    height: 50vh;
+    color: white;
+
+  }
+  .divCriar::-webkit-scrollbar {
+    width: 0px;
+  }
+.divCriar button{
+    color: white;
+}

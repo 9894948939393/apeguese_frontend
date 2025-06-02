@@ -1,0 +1,102 @@
+body{
+    margin: 0%;
+    background-color: black;
+    color: white;
+  }
+  input {
+    padding: 12px;
+    border: 2px solid var(--branco);
+    background-color: transparent;
+    color: white;
+  }
+  
+  button {
+    border: none;
+    background-color:transparent;
+    cursor: pointer;
+    color: white;
+  }
+  .headerContainer{
+    display: flex;
+    flex-direction: row;
+    height: 10vh;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .headerContainer img{
+    height: 10vh;
+  }
+  .headerContainer form{
+    display: flex;
+    border-radius: 10px;
+    height: 5vh;
+    border: 1px solid whitesmoke;
+    align-items: center;
+    width: 50%;
+    max-width: 600px;
+  }
+  .headerContainer form input{
+    width: 80%;
+  }
+  .headerContainer form button{
+    width: 20%;
+  }
+  .headerContainer form button img{
+    height: 5vh;
+  }
+  .divBotoes{
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+  .divBotoes button img{
+    height: 5vh;
+  }
+  .produtos-container{
+    display: flex;
+    flex-direction: row;
+    color: white;
+    margin-top: 3vh;
+    width: 100vw;
+    flex-wrap: wrap;
+}
+.produtos-container form{
+    width: 200px;
+    max-width: 40vw;
+    height: 330px;
+    max-height: 30vh;
+    border-radius: 10px;
+    border: 2px solid red;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    color: white;
+  }
+  .produtos-container form button{
+    color: white;
+  }
+  .imagemProdutoContainer{
+    height: auto;
+    width: 150px;
+    max-width: 30vw;
+  }
+  .divProduto{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+  }
+  .divProduto img{
+    width: 100vw;
+    max-width: 600px;
+    height: auto;
+  }
+  .divProduto div{
+    width: 97vw;
+    max-width: 600px;
+    color: white;
+    padding:5px ;
+  }
+

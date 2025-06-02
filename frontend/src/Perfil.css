@@ -1,0 +1,87 @@
+body{
+    margin: 0%;
+    background-color: black;
+  }
+  input {
+    padding: 12px;
+    border: 2px solid var(--branco);
+    background-color: transparent;
+    color: white;
+  }
+  
+  button {
+    border: none;
+    background-color:transparent;
+    cursor: pointer;
+  }
+  .headerContainer{
+    display: flex;
+    flex-direction: row;
+    height: 10vh;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .headerContainer img{
+    height: 10vh;
+  }
+  .headerContainer form{
+    display: flex;
+    border-radius: 10px;
+    height: 5vh;
+    border: 1px solid whitesmoke;
+    align-items: center;
+    width: 50%;
+    max-width: 600px;
+  }
+  .headerContainer form input{
+    width: 80%;
+  }
+  .headerContainer form button{
+    width: 20%;
+  }
+  .headerContainer form button img{
+    height: 5vh;
+  }
+  .divBotoes{
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+  .divBotoes button img{
+    height: 5vh;
+  }
+  .divLogin{
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 20vh;
+    left: 15vw;
+    color: white;
+    border-color: white solid 2px;
+  }
+  .divLogin button{
+    border-color: white solid 2px;
+    color: white;
+  }
+  .divCriarConta{
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 20vh;
+    left: 15vw;
+    color: white;
+    border-color: white solid 2px;
+  }
+  .divCriarConta button{
+    border-color: white solid 2px;
+    color: white;
+  }
+  .divInformacoesPerfil{
+    display: flex;
+    flex-direction: column;
+    color: white;
+  }
+  .divInformacoesPerfil p{
+    color: white;
+  }
