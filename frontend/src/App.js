@@ -65,7 +65,7 @@ useEffect(() => {
 
     const formData = new FormData(event.target); // Coleta os perfils do formulário
 
-    fetch(`${API_URL}/cadastrar`, {
+    fetch(`${API_URL}/cadastro`, {
       method: 'POST',
       body: formData,
       mode: 'cors',
