@@ -13,7 +13,7 @@ const [mostrarLogin, setMostrarLogin] = useState(true);
 const [mostrarCriarConta, setMostrarCriarConta] = useState(false);
 const API_URL = process.env.REACT_APP_API_URL;
 useEffect(() => {
-    axios.get('${API_URL}/api/hello')//conexão com o backend
+    axios.get(`${API_URL}/api/hello`)//conexão com o backend
       .then(res => setMensagem(res.data.message))
       .catch(err => console.error(err));
   }, []);
