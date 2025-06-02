@@ -11,8 +11,9 @@ const navigate = useNavigate();
 const location = useLocation();
 const [mostrarLogin, setMostrarLogin] = useState(true);
 const [mostrarCriarConta, setMostrarCriarConta] = useState(false);
+const API_URL = process.env.REACT_APP_API_URL;
 useEffect(() => {
-    axios.get('http://localhost:5000/api/hello')//conexão com o backend
+    axios.get('${API_URL}/api/hello')//conexão com o backend
       .then(res => setMensagem(res.data.message))
       .catch(err => console.error(err));
   }, []);
@@ -29,7 +30,7 @@ useEffect(() => {
 
     const formData = new FormData(event.target); 
 
-    fetch('http://localhost:5000/logar', {
+    fetch('${API_URL}/logar', {
       method: 'POST',
       body: formData,
       mode: 'cors',
@@ -64,7 +65,7 @@ useEffect(() => {
 
     const formData = new FormData(event.target); // Coleta os perfils do formulário
 
-    fetch('http://localhost:5000/criar_conta', {
+    fetch('${API_URL}/criar_conta', {
       method: 'POST',
       body: formData,
       mode: 'cors',

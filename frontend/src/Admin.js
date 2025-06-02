@@ -12,7 +12,7 @@ function Admin() {
     const location = useLocation();
     const [produtos, setProdutos] = useState([]);
     const [pedidos, setPedidos] = useState([]);
-    
+    const API_URL = process.env.REACT_APP_API_URL;
   
   useEffect(() => {     
           if (location.pathname === '/admin') {
@@ -25,7 +25,7 @@ function Admin() {
         }, [location.pathname]);
   
     useEffect(() => {
-      fetch('http://127.0.0.1:5000')
+      fetch('${API_URL}.com')
         .then(response => {
           if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
@@ -40,7 +40,7 @@ function Admin() {
         });
     }, []);
     useEffect(() => {
-      fetch('http://127.0.0.1:5001')
+      fetch('${API_URL}.com')
         .then(response => {
           if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
@@ -60,7 +60,7 @@ function Admin() {
   
       const formData = new FormData(event.target);
   
-      fetch('http://127.0.0.1:5001/adicionar_produto', {
+      fetch('${API_URL}.com/adicionar_produto', {
         method: 'POST',
         body: formData,
         mode: 'cors',
@@ -94,7 +94,7 @@ function Admin() {
   
       const formData = new FormData(event.target);
   
-      fetch('http://127.0.0.1:5001/atualizar_preco', {
+      fetch('${API_URL}.com/atualizar_preco', {
         method: 'POST',
         body: formData,
         mode: 'cors',
@@ -123,7 +123,7 @@ function Admin() {
     };
 
     useEffect(() => {
-      fetch('http://127.0.0.1:5001/produtos') 
+      fetch('${API_URL}.com/produtos') 
         .then(response => {
           if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
@@ -138,7 +138,7 @@ function Admin() {
         });
     }, []);
     useEffect(() => {
-        fetch('http://127.0.0.1:5001/pedidos') 
+        fetch('${API_URL}.com/pedidos') 
           .then(response => {
             if (!response.ok) {
               throw new Error(`HTTP error! status: ${response.status}`);
@@ -157,7 +157,7 @@ function Admin() {
   
       const formData = new FormData(event.target);
   
-      fetch('http://127.0.0.1:5001/deletar_produto', {
+      fetch('${API_URL}.com/deletar_produto', {
         method: 'POST',
         body: formData,
         mode: 'cors',

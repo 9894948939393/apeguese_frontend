@@ -29,6 +29,7 @@ const [botaoSacola, setBotaoSacola] = useState(true)
 const [areaPedidos, setAreaPedidos] = useState(false)
 const [pedido, setPedido] = useState([]);
 const [barraPedidosCarrinho, setBarraPedidosCarrinho] = useState(false)
+const API_URL = process.env.REACT_APP_API_URL;
 useEffect(() => {     
   if (location.pathname === '/main') {
     setMostrarMain(true);
@@ -42,7 +43,7 @@ useEffect(() => {
   }
 }, [location.pathname]);
   useEffect(() => {
-    axios.get('http://localhost:5000/api/hello')//conexão com o backend
+    axios.get('${API_URL}/api/hello')//conexão com o backend
       .then(res => setMensagem(res.data.message))
       .catch(err => console.error(err));
   }, []);
@@ -53,7 +54,7 @@ useEffect(() => {
   };
 
   useEffect(() => {
-    fetch('http://127.0.0.1:5000/produtos') 
+    fetch('${API_URL}/produtos') 
       .then(response => {
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
@@ -76,7 +77,7 @@ useEffect(() => {
 
     const formData = new FormData(event.target);
 
-    fetch('http://localhost:5000/selecionar_produto', {
+    fetch('${API_URL}/selecionar_produto', {
       method: 'POST',
       body: formData,
       mode: 'cors',
@@ -112,7 +113,7 @@ useEffect(() => {
 
     const formData = new FormData(event.target);
 
-    fetch('http://localhost:5000/adicionar_carrinho', {
+    fetch('${API_URL}/adicionar_carrinho', {
       method: 'POST',
       body: formData,
       mode: 'cors',
@@ -147,7 +148,7 @@ useEffect(() => {
 
     const formData = new FormData(event.target);
 
-    fetch('http://localhost:5000/adicionar_favoritos', {
+    fetch('${API_URL}/adicionar_favoritos', {
       method: 'POST',
       body: formData,
       mode: 'cors',
@@ -175,7 +176,7 @@ useEffect(() => {
 
     const formData = new FormData(event.target);
 
-    fetch('http://localhost:5000/mostrar_carrinho', {
+    fetch('${API_URL}/mostrar_carrinho', {
       method: 'POST',
       body: formData,
       mode: 'cors',
@@ -225,7 +226,7 @@ useEffect(() => {
     
         const formData = new FormData(event.target);
     
-        fetch('http://localhost:5000/mostrar_pedidos', {
+        fetch('${API_URL}/mostrar_pedidos', {
           method: 'POST',
           body: formData,
           mode: 'cors',
@@ -286,7 +287,7 @@ useEffect(() => {
     
         const formData = new FormData(event.target);
     
-        fetch('http://localhost:5000/deletar_carrinho', {
+        fetch('${API_URL}/deletar_carrinho', {
           method: 'POST',
           body: formData,
           mode: 'cors',
@@ -315,7 +316,7 @@ useEffect(() => {
         
             const formData = new FormData(event.target);
         
-            fetch('http://localhost:5000/ir_pedido', {
+            fetch('${API_URL}/ir_pedido', {
               method: 'POST',
               body: formData,
               mode: 'cors',
@@ -366,7 +367,7 @@ useEffect(() => {
         
             const formData = new FormData(event.target);
         
-            fetch('http://localhost:5000/finalizar_pedido', {
+            fetch('${API_URL}/finalizar_pedido', {
               method: 'POST',
               body: formData,
               mode: 'cors',
@@ -425,7 +426,7 @@ useEffect(() => {
     
         const formData = new FormData(event.target);
     
-        fetch('http://localhost:5000/alterar_endereco', {
+        fetch('${API_URL}/alterar_endereco', {
           method: 'POST',
           body: formData,
           mode: 'cors',

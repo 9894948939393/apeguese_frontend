@@ -9,7 +9,7 @@ const [perfil, setPerfil] = useState('');
 const [mostrarGeralPerfil, setMostrarGeralPerfil] = useState(true);
 const navigate = useNavigate();
 const location = useLocation();
-  
+const API_URL = process.env.REACT_APP_API_URL;  
 useEffect(() => {     
     if (location.pathname === '/perfil') {
       setMostrarGeralPerfil(true)
@@ -20,7 +20,7 @@ useEffect(() => {
   }, [location.pathname]);
 
 useEffect(() => {
-    axios.get('http://localhost:5000/api/hello')//conexão com o backend
+    axios.get('${API_URL}/api/hello')//conexão com o backend
       .then(res => setMensagem(res.data.message))
       .catch(err => console.error(err));
   }, []);
@@ -28,7 +28,7 @@ useEffect(() => {
     navigate('/main');
   };
   const carregarPerfil = () => {
-    fetch('http://localhost:5000/perfil', {
+    fetch('${API_URL}/perfil', {
       method: "GET",
       credentials: 'include'
     }) 
