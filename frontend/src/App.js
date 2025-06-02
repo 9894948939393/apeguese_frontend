@@ -30,7 +30,7 @@ useEffect(() => {
 
     const formData = new FormData(event.target); 
 
-    fetch('${API_URL}/logar', {
+    fetch('${API_URL}/login', {
       method: 'POST',
       body: formData,
       mode: 'cors',
@@ -65,7 +65,7 @@ useEffect(() => {
 
     const formData = new FormData(event.target); // Coleta os perfils do formulário
 
-    fetch('${API_URL}/criar_conta', {
+    fetch('${API_URL}/cadastrar', {
       method: 'POST',
       body: formData,
       mode: 'cors',
