@@ -44,7 +44,7 @@ useEffect(() => {
       })
       .then(data => {
         console.log('Resposta do logar:', data);
-        if (data && data.message === "Login realizado com sucesso!") {
+        if (data && data.message === "Login realizado com sucesso") {
           navegarParaMain()
         } else if (data && data.message === "Usuário ou senha incorretos, tente novamente") {
           alert(data.message);
