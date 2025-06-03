@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { BrowserRouter, Routes, Route, useNavigate, useLocation } from 'react-router-dom';
 import axios from 'axios';
-import './app.css';
+import './App.css';
 import Perfil from './Perfil.js';
 import Login from './login.js';
 
