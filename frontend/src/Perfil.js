@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { BrowserRouter, Routes, Route, useNavigate, useLocation } from 'react-router-dom';
 import axios from 'axios';
 import './Perfil.css';
-import Main from './main.js';
+import Main from './App.js';
 function Perfil() {
 const [mensagem, setMensagem] = useState('');
 const [perfil, setPerfil] = useState('');

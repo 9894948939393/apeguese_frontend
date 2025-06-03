@@ -2,8 +2,8 @@ import { useEffect, useState } from 'react';
 import { BrowserRouter, Routes, Route, useNavigate, useLocation } from 'react-router-dom';
 import axios from 'axios';
 import './Admin.css';
-import Main from './main.js';
-import App from './App.js';
+import Main from './App.js';
+import App from './login.js';
 function Admin() {
     const [mostarPedidos, setMostrarPedidos] = useState(true);
     const [criar, setCriar] = useState(false);
