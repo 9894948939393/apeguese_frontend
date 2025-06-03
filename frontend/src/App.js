@@ -79,7 +79,7 @@ useEffect(() => {
       })
       .then(data => {
         console.log('Resposta do criar conta:', data);
-        if (data && data.message === "Conta criada com sucesso!") {
+        if (data && data.message === "Usuário cadastrado com sucesso") {
           setMostrarCriarConta(false)
           setMostrarLogin(true)
         } else if (data && data.message === "Usuário com este email já existe!") {
