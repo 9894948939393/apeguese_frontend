@@ -207,8 +207,7 @@ useEffect(() => {
     const formData = new FormData(event.target);
 
     fetch(`${API_URL}/mostrar_carrinho`, {
-      method: 'POST',
-      body: formData,
+      method: 'GET',
       mode: 'cors',
       credentials: 'include'
     })
@@ -257,8 +256,7 @@ useEffect(() => {
         const formData = new FormData(event.target);
     
         fetch(`${API_URL}/mostrar_pedidos`, {
-          method: 'POST',
-          body: formData,
+          method: 'GET',
           mode: 'cors',
           credentials: 'include'
         })
