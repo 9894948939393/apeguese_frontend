@@ -692,6 +692,10 @@ useEffect(() => {
     </main>
   );
 }
+function AppWrapper() {
+  return (
+      <App />
+  );
+}
 
-export default App;
-
+export default AppWrapper
