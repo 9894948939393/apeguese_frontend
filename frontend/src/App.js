@@ -4,6 +4,7 @@ import axios from 'axios';
 import './App.css';
 import Perfil from './Perfil.js';
 import Login from './login.js';
+import Admin from './Admin.js'
 
 function App() {
 const [mensagem, setMensagem] = useState('');
