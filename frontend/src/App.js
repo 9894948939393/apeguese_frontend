@@ -50,7 +50,13 @@ useEffect(() => {
   };
 
   useEffect(() => {
-    fetch(`${API_URL}/produtos`) 
+    fetch(`${API_URL}/produtos`, {
+      method: 'GET',
+      credentials: 'include', 
+      headers: {
+        'Accept': 'application/json'
+      }
+    }) 
       .then(response => {
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
@@ -65,7 +71,13 @@ useEffect(() => {
       });
   }, []);
   useEffect(() => {
-    fetch(`${API_URL}/session`) 
+    fetch(`${API_URL}/session`, {
+      method: 'GET',
+      credentials: 'include', 
+      headers: {
+        'Accept': 'application/json'
+      }
+    }) 
       .then(response => {
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
