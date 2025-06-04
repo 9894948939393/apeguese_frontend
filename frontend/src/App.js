@@ -32,7 +32,7 @@ const [barraPedidosCarrinho, setBarraPedidosCarrinho] = useState(false)
 const [botaoLogin, setBotaoLogin] = useState(false)
 const API_URL = process.env.REACT_APP_API_URL;
 useEffect(() => {     
-  if (location.pathname === '/main') {
+  if (location.pathname === '/' || location.pathname === '/app' || location.pathname === '/app_main') {
     setMostrarMain(true);
     setMostrarCabecalho(true)
     setMostrarProduto(false)
