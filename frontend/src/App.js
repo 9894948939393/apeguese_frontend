@@ -29,7 +29,7 @@ const [botaoSacola, setBotaoSacola] = useState(false)
 const [areaPedidos, setAreaPedidos] = useState(false)
 const [pedido, setPedido] = useState([]);
 const [barraPedidosCarrinho, setBarraPedidosCarrinho] = useState(false)
-const [botaoLogin, setBotaoLogin] = useState(true)
+const [botaoLogin, setBotaoLogin] = useState(false)
 const API_URL = process.env.REACT_APP_API_URL;
 useEffect(() => {     
   if (location.pathname === '/' || location.pathname === '/app' || location.pathname === '/app_main') {
@@ -39,6 +39,7 @@ useEffect(() => {
     setBotaoHome(false)
     setBarraPedidosCarrinho(false)
     setBotaoSacola(false)
+    fetch("session")
   } else{
     setMostrarMain(false);
   }
@@ -90,9 +91,9 @@ useEffect(() => {
           setBotaoHome(false)
           setBotaoSacola(true)
         }else{
-        setBotaoLogin(true)
-        setBotaoHome(false)
-        setBotaoSacola(false)
+          setBotaoLogin(true)
+          setBotaoHome(false)
+          setBotaoSacola(false)
       }
       })
       .catch(error => {
