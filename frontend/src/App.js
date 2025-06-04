@@ -697,6 +697,7 @@ useEffect(() => {
       <Routes>
         <Route path="/perfil" element={<Perfil />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/app" element={<App />} />
       </Routes>
     </main>
   );
