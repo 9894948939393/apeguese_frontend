@@ -61,7 +61,7 @@ function Admin() {
           console.log('Resposta do logar:', data);
           if (data && data.message === "Produto adicionado com sucesso!") {
             alert(data.message)
-            fetch("/produtos")
+            fetch(`${API_URL}/produtos`)
           } else if (data && data.message === "Não foi possível criar produto, tente novamente") {
             alert(data.message);
           }else {
@@ -158,7 +158,7 @@ function Admin() {
           console.log('Resposta do logar:', data);
           if (data && data.message === "Produto deletado com sucesso") {
             alert(data.message)
-            fetch("/produtos")
+            fetch(`${API_URL}/produtos`)
           } else if (data && data.message === "Não foi possível deletar o produto, tente novamente") {
             alert(data.message);
           }else {
@@ -299,10 +299,6 @@ function Admin() {
           <button onClick={irEditar}><img src="/images/editar.png" alt='editar'></img></button>
           <button onClick={irPedidos}><img src="/images/pedidos.png" alt='pedido'></img></button>              
         </div>
-        <Routes>
-          <Route path="/app" element={<App />} />
-          <Route path="/login" element={<Login />} />
-        </Routes>
       </main>
     );
   }
