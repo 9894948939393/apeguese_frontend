@@ -87,6 +87,7 @@ useEffect(() => {
         return response.json();
       })
       .then(data => {
+        console.log("A sessão é:" + data.sessao)
         if (data.sessao){
           setBotaoLogin(false)
           setBotaoHome(false)
