@@ -73,14 +73,14 @@ useEffect(() => {
         return response.json();
       })
       .then(data => {
-        if (data.sessao !== ""){
+        if (data.sessao){
+          setBotaoLogin(true)
+          setBotaoHome(false)
+          setBotaoSacola(false)
+        }else{
         setBotaoLogin(false)
         setBotaoHome(true)
         setBotaoSacola(true)
-      }else{
-        setBotaoLogin(true)
-        setBotaoHome(false)
-        setBotaoSacola(false)
       }
       })
       .catch(error => {
