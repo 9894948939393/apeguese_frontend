@@ -86,13 +86,13 @@ useEffect(() => {
       })
       .then(data => {
         if (data.sessao){
-          setBotaoLogin(true)
+          setBotaoLogin(false)
           setBotaoHome(false)
-          setBotaoSacola(false)
+          setBotaoSacola(true)
         }else{
-        setBotaoLogin(false)
-        setBotaoHome(true)
-        setBotaoSacola(true)
+        setBotaoLogin(true)
+        setBotaoHome(false)
+        setBotaoSacola(false)
       }
       })
       .catch(error => {

@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { BrowserRouter, Routes, Route, useNavigate, useLocation } from 'react-router-dom';
 import axios from 'axios';
 import './Perfil.css';
-import Main from './App.js';
+import App from './App.js';
 function Perfil() {
 const [mensagem, setMensagem] = useState('');
 const [perfil, setPerfil] = useState('');
@@ -25,7 +25,7 @@ useEffect(() => {
       .catch(err => console.error(err));
   }, []);
   const navegarParaMain = () => {
-    navigate('/main');
+    navigate('/app');
   };
   const carregarPerfil = () => {
     fetch(`${API_URL}/perfil`, {
@@ -108,7 +108,7 @@ useEffect(() => {
       </div>
       <footer style={{display: mostrarGeralPerfil? 'flex' : 'none'}}></footer>
       <Routes>
-        <Route path="/main" element={<Main />} />
+        <Route path="/app" element={<App />} />
       </Routes>
     </main>
   );
