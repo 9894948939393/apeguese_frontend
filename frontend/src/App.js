@@ -40,7 +40,7 @@ useEffect(() => {
     setBotaoHome(false)
     setBarraPedidosCarrinho(false)
     setBotaoSacola(false)
-    fetch("/session")
+    fetch(`${API_URL}/session`)
   } else{
     setMostrarMain(false);
   }
