@@ -25,7 +25,7 @@ const [frete, setFrete] = useState([]);
 const [totalFrete, setTotalFrete] = useState([]);
 const [ruaNumero, setRuaNumero ]= useState([]);
 const [avisoEndereco, setAvisoEndereco ]= useState([]);
-const [botaoSacola, setBotaoSacola] = useState(true)
+const [botaoSacola, setBotaoSacola] = useState(false)
 const [areaPedidos, setAreaPedidos] = useState(false)
 const [pedido, setPedido] = useState([]);
 const [barraPedidosCarrinho, setBarraPedidosCarrinho] = useState(false)
@@ -38,16 +38,11 @@ useEffect(() => {
     setMostrarProduto(false)
     setBotaoHome(false)
     setBarraPedidosCarrinho(false)
-    setBotaoSacola(true)
+    setBotaoSacola(false)
   } else{
     setMostrarMain(false);
   }
 }, [location.pathname]);
-  useEffect(() => {
-    axios.get(`${API_URL}/api/hello`)//conexão com o backend
-      .then(res => setMensagem(res.data.message))
-      .catch(err => console.error(err));
-  }, []);
   const navegarParaPerfil = () => {
     navigate('/perfil');
     setMostrarMain(false);
