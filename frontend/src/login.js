@@ -18,7 +18,7 @@ useEffect(() => {
       .catch(err => console.error(err));
   }, []);
   const navegarParaMain = () => {
-    navigate('/main');
+    navigate('/app');
     setMostrarLogin(false)
   };
   const navegarParAdmin = () => {
