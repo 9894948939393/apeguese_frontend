@@ -5,8 +5,8 @@ import './Admin.css';
 import Main from './App.js';
 import App from './login.js';
 function Admin() {
-    const [mostarPedidos, setMostrarPedidos] = useState(true);
-    const [criar, setCriar] = useState(false);
+    const [mostarPedidos, setMostrarPedidos] = useState(false);
+    const [criar, setCriar] = useState(true);
     const [editar, setEditar] = useState(false);
     const navigate = useNavigate();
     const location = useLocation();

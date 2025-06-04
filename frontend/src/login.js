@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { BrowserRouter, Routes, Route, useNavigate, useLocation } from 'react-router-dom';
 import axios from 'axios';
-import Main from './App.js';
+import App from './App.js';
 import Perfil from './Perfil.js';
 import Admin from './Admin.js'
 import './login.css';
@@ -152,7 +152,7 @@ useEffect(() => {
             </form>
         </div>
       <Routes>
-        <Route path="/main" element={<Main/>} />
+        <Route path="/app" element={<App/>} />
         <Route path="/perfil" element={<Perfil />} />
         <Route path="/admin" element={<Admin />} />
       </Routes>
