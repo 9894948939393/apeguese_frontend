@@ -18,12 +18,6 @@ useEffect(() => {
       setMostrarGeralPerfil(false)
     }
   }, [location.pathname]);
-
-useEffect(() => {
-    axios.get(`${API_URL}/api/hello`)//conexão com o backend
-      .then(res => setMensagem(res.data.message))
-      .catch(err => console.error(err));
-  }, []);
   const navegarParaMain = () => {
     navigate('/app');
   };

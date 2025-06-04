@@ -2,8 +2,8 @@ import { useEffect, useState } from 'react';
 import { BrowserRouter, Routes, Route, useNavigate, useLocation } from 'react-router-dom';
 import axios from 'axios';
 import './Admin.css';
-import Main from './App.js';
-import App from './login.js';
+import App from './App.js';
+import Login from './login.js';
 function Admin() {
     const [mostarPedidos, setMostrarPedidos] = useState(false);
     const [criar, setCriar] = useState(true);
@@ -171,7 +171,7 @@ function Admin() {
         });
     };
     const navegarParaLogin = () => {
-      navigate('/app');
+      navigate('/login');
     };
   
     const irPedidos = () => {
@@ -301,6 +301,7 @@ function Admin() {
         </div>
         <Routes>
           <Route path="/app" element={<App />} />
+          <Route path="/login" element={<Login />} />
         </Routes>
       </main>
     );

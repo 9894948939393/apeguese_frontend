@@ -40,7 +40,7 @@ useEffect(() => {
     setBotaoHome(false)
     setBarraPedidosCarrinho(false)
     setBotaoSacola(false)
-    fetch("session")
+    fetch("/session")
   } else{
     setMostrarMain(false);
   }
