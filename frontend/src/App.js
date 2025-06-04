@@ -29,7 +29,7 @@ const [botaoSacola, setBotaoSacola] = useState(false)
 const [areaPedidos, setAreaPedidos] = useState(false)
 const [pedido, setPedido] = useState([]);
 const [barraPedidosCarrinho, setBarraPedidosCarrinho] = useState(false)
-const [botaoLogin, setBotaoLogin] = useState(false)
+const [botaoLogin, setBotaoLogin] = useState(true)
 const API_URL = process.env.REACT_APP_API_URL;
 useEffect(() => {     
   if (location.pathname === '/' || location.pathname === '/app' || location.pathname === '/app_main') {
@@ -100,6 +100,8 @@ useEffect(() => {
       });
   }, []);
   const navegarParaLogin = () => {
+    setMostrarCabecalho(false)
+    setMostrarMain(false)
     navigate('/login');
   };
   const selecionarProduto = (event) => {
