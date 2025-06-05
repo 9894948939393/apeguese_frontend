@@ -122,7 +122,7 @@ function Admin() {
         })
         .then(data => {
           console.log(data.produtos)
-          setProdutos(data);
+          setProdutos(data.produtos);
           
         })
         .catch(error => {
@@ -282,8 +282,8 @@ function Admin() {
                   <br />
                   <select name="produto" id="">
                   <option value="">Selecione o produto</option>
-                  {Array.isArray(produtos) && produtos.map(produto => (
-                      <option key={produto[0]} value={produto[1]}>{produto[1]}</option>
+                  {produtos.map(produto => (
+                      <option key={produto["id"]} value={produto["nome"]}>{produto["nome"]}</option>
                   ))}
                   </select>
                   <button type='submit'>atualizar</button>
@@ -296,9 +296,8 @@ function Admin() {
                   <br />
                   <select name="produto" id="">
                   <option value="">Selecione o produto</option>
-                  {
-                  Array.isArray(produtos) && produtos.map(produto => (
-                      <option key={produto[0]} value={produto[1]}>{produto[1]}</option>
+                  {produtos.map(produto => (
+                      <option key={produto["id"]} value={produto["nome"]}>{produto["nome"]}</option>
                   ))}
                   </select>
                   <button type='submit'>Deletar</button>
