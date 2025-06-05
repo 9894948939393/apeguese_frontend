@@ -67,9 +67,15 @@ useEffect(() => {
         return response.json();
       })
       .then(data => {
-        console.log(data.produtos)
-        setProdutos(data.produtos);
-
+        if (!Array.isArray(data.produtos)) {
+          console.error("ERRO: data.produtos não é uma array:", data.produtos);
+          return;
+        }
+        setProdutos(data.produtos); if (!Array.isArray(data.produtos)) {
+    console.error("ERRO: data.produtos não é uma array:", data.produtos);
+    return;
+  }
+  setProdutos(data.produtos);
       })
       .catch(error => {
         console.error('Erro ao buscar produtos:', error);
