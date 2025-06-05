@@ -121,6 +121,7 @@ function Admin() {
           return response.json();
         })
         .then(data => {
+          console.log(data.produtos)
           setProdutos(data.produtos);
         })
         .catch(error => {
