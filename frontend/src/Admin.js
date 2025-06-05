@@ -13,6 +13,7 @@ function Admin() {
     const [produtos, setProdutos] = useState([]);
     const [pedidos, setPedidos] = useState([]);
     const API_URL = process.env.REACT_APP_API_URL;
+    const imagemURL = `${process.env.REACT_APP_API_URL}/uploads/`
   
   useEffect(() => {     
           if (location.pathname === '/admin') {
@@ -108,7 +109,11 @@ function Admin() {
     };
 
     useEffect(() => {
-      fetch(`${API_URL}/produtos`) 
+      fetch(`${API_URL}/produtos`, {
+        method: 'GET',
+        mode: 'cors',
+        credentials: 'include'
+      }) 
         .then(response => {
           if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
@@ -215,7 +220,7 @@ function Admin() {
         </div>
         <div style={{display: criar? 'flex' : 'none' }} className='divCriar'>
           <div>
-          <form  onSubmit={adicionarProduto}method="post">
+          <form  onSubmit={adicionarProduto} method="post">
               <h3>Criar produto</h3>
               <br />
               <label>Produto:</label>
