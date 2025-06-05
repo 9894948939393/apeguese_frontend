@@ -32,7 +32,6 @@ const [pedido, setPedido] = useState([]);
 const [barraPedidosCarrinho, setBarraPedidosCarrinho] = useState(false)
 const [botaoLogin, setBotaoLogin] = useState(false)
 const API_URL = process.env.REACT_APP_API_URL;
-  const imagemURL = `${process.env.REACT_APP_API_URL}/uploads/`
 useEffect(() => {     
   if (location.pathname === '/' || location.pathname === '/app' || location.pathname === '/app_main') {
     setMostrarMain(true);
@@ -67,15 +66,9 @@ useEffect(() => {
         return response.json();
       })
       .then(data => {
-        if (!Array.isArray(data.produtos)) {
-          console.error("ERRO: data.produtos não é uma array:", data.produtos);
-          return;
-        }
-        setProdutos(data.produtos); if (!Array.isArray(data.produtos)) {
-    console.error("ERRO: data.produtos não é uma array:", data.produtos);
-    return;
-  }
-  setProdutos(data.produtos);
+        console.log(data.produtos)
+        setProdutos(data.produtos);
+
       })
       .catch(error => {
         console.error('Erro ao buscar produtos:', error);

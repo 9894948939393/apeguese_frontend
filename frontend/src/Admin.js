@@ -13,7 +13,7 @@ function Admin() {
     const [produtos, setProdutos] = useState([]);
     const [pedidos, setPedidos] = useState([]);
     const API_URL = process.env.REACT_APP_API_URL;
-    const imagemURL = `${process.env.REACT_APP_API_URL}/uploads/`
+    // const imagemURL = `${process.env.REACT_APP_API_URL}/uploads/`
   
   useEffect(() => {     
           if (location.pathname === '/admin') {
@@ -121,11 +121,9 @@ function Admin() {
           return response.json();
         })
         .then(data => {
-          if (!Array.isArray(data.produtos)) {
-            console.error("ERRO: data.produtos não é uma array:", data.produtos);
-            return;
-          }
+          console.log(data.produtos)
           setProdutos(data.produtos);
+          
         })
         .catch(error => {
           console.error('Erro ao buscar produtos:', error);
