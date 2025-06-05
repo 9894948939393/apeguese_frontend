@@ -41,7 +41,7 @@ useEffect(() => {
     setBotaoHome(false)
     setBarraPedidosCarrinho(false)
     setBotaoSacola(false)
-    fetch(`${API_URL}/session`)
+    sessao()
   } else{
     setMostrarMain(false);
   }
@@ -78,7 +78,11 @@ useEffect(() => {
   useEffect(() => {
     console.log("Produtos atualizados:", produtos);
   }, [produtos]);
-  useEffect(() => {
+  const sessao = (event) => {
+
+    event.preventDefault(); 
+
+    const formData = new FormData(event.target);
     fetch(`${API_URL}/session`, {
       method: 'GET',
       credentials: 'include', 
@@ -107,7 +111,7 @@ useEffect(() => {
       .catch(error => {
         console.error('Erro ao buscar produtos:', error);
       });
-  }, []);
+  };
   const navegarParaLogin = () => {
     setMostrarCabecalho(false)
     setMostrarMain(false)
