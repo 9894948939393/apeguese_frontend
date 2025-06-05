@@ -68,7 +68,9 @@ useEffect(() => {
       })
       .then(data => {
         console.log(data.produtos)
-        setProdutos(data.produtos || []);
+        setProdutos(data.produtos);
+        console.log(produtos)
+
       })
       .catch(error => {
         console.error('Erro ao buscar produtos:', error);
