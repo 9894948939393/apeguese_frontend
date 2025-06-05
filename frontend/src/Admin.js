@@ -45,7 +45,7 @@ function Admin() {
   
       const formData = new FormData(event.target);
   
-      fetch(`${API_URL}/adicionar_produto`, {
+      fetch(`${API_URL}/novo_produto`, {
         method: 'POST',
         body: formData,
         mode: 'cors',
