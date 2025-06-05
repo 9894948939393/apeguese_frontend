@@ -68,7 +68,7 @@ useEffect(() => {
       })
       .then(data => {
         console.log(data.produtos)
-        setProdutos(data);
+        setProdutos(data.produtos);
 
       })
       .catch(error => {
@@ -522,12 +522,12 @@ useEffect(() => {
       <div style={{display: mostrarMain? 'flex' : 'none', flexDirection:"column" }}>
         <img alt='fundo tênis'src='/images/fundo_tenis.gif' style={{width:"100vw", height:"auto"}}></img>
         <div className=" produtos-container">
-            {Array.isArray(produtos) && produtos.map(produto => (
+            {produtos.map(produto => (
                 <form key={produto[0]} onSubmit={selecionarProduto}>                
                 <button type='submit'>
                     {/* <img src={`${imagemURL}${produto[10]}`} alt={produto[1]} className='imagemProdutoContainer'></img>           */}
-                    <p>{produto[1]}</p>
-                    <p><b>R${produto[3]}</b></p>
+                    <p>{produto["nome"]}</p>
+                    <p><b>R${produto["valor"]}</b></p>
                 </button>
                 <input type='hidden' name="escolha" value={produto[1]}></input>
                 </form>
@@ -539,15 +539,15 @@ useEffect(() => {
             <div key={filtro[0]} className='divProduto'>   
                 <img src={`/images/${filtro[10]}`} alt={filtro[1]}></img>                  
                 <div>
-                    <h1>{filtro[1]}</h1>
-                    <h3>R${filtro[3]}</h3>
-                    <p>Tamanho:{filtro[9]}</p>
-                    <p>Gênero {filtro[2]}</p>
-                    <p>Marca: {filtro[2]}</p>
-                    <p>Cor: {filtro[7]}</p>
-                    <p>Descrição: {filtro[6]}</p>
+                    <h1>{filtro["nome"]}</h1>
+                    <h3>R${filtro["valor"]}</h3>
+                    <p>Tamanho:{filtro["numeracao"]}</p>
+                    <p>Gênero {filtro["genero"]}</p>
+                    <p>Marca: {filtro["marca"]}</p>
+                    <p>Cor: {filtro["cor"]}</p>
+                    <p>Descrição: {filtro["descricao"]}</p>
                     <form method='post' onSubmit={adicionarCarrinho}>
-                        <input type='hidden' name="produto" value={filtro[5]}></input>
+                        <input type='hidden' name="produto" value={filtro["codigo"]}></input>
                         <button type='submit'><img alt='carrinho' src='/images/carrinho.png' style={{ width:'auto', height:'5vh'}}></img></button>
                     </form>
                     <form method='post' id='formCurtir' onSubmit={adicionarFavoritos}>
