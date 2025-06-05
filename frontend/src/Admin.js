@@ -282,7 +282,7 @@ function Admin() {
                   <br />
                   <select name="produto" id="">
                   <option value="">Selecione o produto</option>
-                  {produtos.map(produto => (
+                  {Array.isArray(produtos) && produtos.map(produto => (
                       <option key={produto[0]} value={produto[1]}>{produto[1]}</option>
                   ))}
                   </select>
