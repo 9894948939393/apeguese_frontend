@@ -522,7 +522,7 @@ useEffect(() => {
       <div style={{display: mostrarMain? 'flex' : 'none', flexDirection:"column" }}>
         <img alt='fundo tênis'src='/images/fundo_tenis.gif' style={{width:"100vw", height:"auto"}}></img>
         <div className=" produtos-container">
-            {produtos.map(produto => (
+            {Array.isArray(produtos) && produtos.map(produto => (
                 <form key={produto[0]} onSubmit={selecionarProduto}>                
                 <button type='submit'>
                     {/* <img src={`${imagemURL}${produto[10]}`} alt={produto[1]} className='imagemProdutoContainer'></img>           */}
