@@ -32,6 +32,7 @@ const [pedido, setPedido] = useState([]);
 const [barraPedidosCarrinho, setBarraPedidosCarrinho] = useState(false)
 const [botaoLogin, setBotaoLogin] = useState(false)
 const API_URL = process.env.REACT_APP_API_URL;
+  // const imagemURL = `${process.env.REACT_APP_API_URL}/uploads/`
 useEffect(() => {     
   if (location.pathname === '/' || location.pathname === '/app' || location.pathname === '/app_main') {
     setMostrarMain(true);
@@ -524,7 +525,7 @@ useEffect(() => {
             {produtos.map(produto => (
                 <form key={produto[0]} onSubmit={selecionarProduto}>                
                 <button type='submit'>
-                    <img src={`${imagemURL}${produto[10]}`} alt={produto[1]} className='imagemProdutoContainer'></img>          
+                    {/* <img src={`${imagemURL}${produto[10]}`} alt={produto[1]} className='imagemProdutoContainer'></img>           */}
                     <p>{produto[1]}</p>
                     <p><b>R${produto[3]}</b></p>
                 </button>
