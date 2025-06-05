@@ -122,7 +122,7 @@ function Admin() {
         })
         .then(data => {
           console.log(data.produtos)
-          setProdutos(data.produtos);
+          setProdutos(data);
           
         })
         .catch(error => {
@@ -296,7 +296,8 @@ function Admin() {
                   <br />
                   <select name="produto" id="">
                   <option value="">Selecione o produto</option>
-                  {produtos.map(produto => (
+                  {
+                  produtos.map(produto => (
                       <option key={produto[0]} value={produto[1]}>{produto[1]}</option>
                   ))}
                   </select>

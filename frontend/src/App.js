@@ -68,7 +68,7 @@ useEffect(() => {
       })
       .then(data => {
         console.log(data.produtos)
-        setProdutos(data.produtos);
+        setProdutos(data);
 
       })
       .catch(error => {
