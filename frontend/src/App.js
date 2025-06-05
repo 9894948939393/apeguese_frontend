@@ -529,7 +529,7 @@ useEffect(() => {
                     <p>{produto["nome"]}</p>
                     <p><b>R${produto["valor"]}</b></p>
                 </button>
-                <input type='hidden' name="escolha" value={produto[1]}></input>
+                <input type='hidden' name="escolha" value={produto["nome"]}></input>
                 </form>
                 ))}
         </div>
@@ -537,7 +537,7 @@ useEffect(() => {
       <div style={{display: mostrarProduto? 'flex' : 'none' }}>
         {produtoFiltrado.map(filtro => (
             <div key={filtro[0]} className='divProduto'>   
-                <img src={`/images/${filtro[10]}`} alt={filtro[1]}></img>                  
+                {/* <img src={`/images/${filtro["imagem"]}`} alt={filtro[1]}></img>                   */}
                 <div>
                     <h1>{filtro["nome"]}</h1>
                     <h3>R${filtro["valor"]}</h3>
@@ -551,7 +551,7 @@ useEffect(() => {
                         <button type='submit'><img alt='carrinho' src='/images/carrinho.png' style={{ width:'auto', height:'5vh'}}></img></button>
                     </form>
                     <form method='post' id='formCurtir' onSubmit={adicionarFavoritos}>
-                        <input type='hidden' name='produto' value={filtro[5]}></input>
+                        <input type='hidden' name='produto' value={filtro["codigo"]}></input>
                     </form>
                 </div>
             </div>
@@ -563,17 +563,17 @@ useEffect(() => {
     </div>
     <div style={{display: areaCarrinho? 'flex' : 'none', flexDirection:"column" }}>
       {carrinho.map(filtro => (
-        <div key={filtro[0]} className='divProdutoCarrinho'>   
-              <form className="formProdutoCarrinho"method='post' key={filtro[0]} onSubmit={selecionarProduto}>                
+        <div key={filtro["id"]} className='divProdutoCarrinho'>   
+              <form className="formProdutoCarrinho"method='post' key={filtro["id"]} onSubmit={selecionarProduto}>                
                 <button type='submit'>
-                  <img src={`/images/${filtro[10]}`} alt={filtro[1]}></img>          
-                  <p>{filtro[1]}</p>
-                  <h3>R${filtro[3]}</h3>
+                  {/* <img src={`/images/${filtro[10]}`} alt={filtro[1]}></img>           */}
+                  <p>{filtro["nome"]}</p>
+                  <h3>R${filtro["valor"]}</h3>
                 </button>
-              <input type='hidden' name="escolha" value={filtro[5]}></input>
+              <input type='hidden' name="escolha" value={filtro["nome"]}></input>
               </form>
               <form method='post' className='formLixeira' onSubmit={deletarCarrinho}>
-                <input type='hidden' name="produto" value={filtro[5]}></input>
+                <input type='hidden' name="produto" value={filtro["codigo"]}></input>
                 <button type='submit'><img alt='carrinho' src='/images/lixeira.png'></img></button>
               </form>
         </div>
@@ -590,17 +590,13 @@ useEffect(() => {
         <div>
         {carrinho.map(filtro => (
         <div key={filtro[0]} className='divProdutoCarrinho'>   
-              <form className="formProdutoCarrinho"method='post' key={filtro[0]} onSubmit={selecionarProduto}>                
+              <form className="formProdutoCarrinho"method='post' key={filtro["id"]} onSubmit={selecionarProduto}>                
                 <button type='submit'>
-                  <img src={`/images/${filtro[10]}`} alt={filtro[1]}></img>          
-                  <p>{filtro[1]}</p>
-                  <h3>R${filtro[3]}</h3>
+                  {/* <img src={`/images/${filtro[10]}`} alt={filtro[1]}></img>           */}
+                  <p>{filtro["nome"]}</p>
+                  <h3>R${filtro["valor"]}</h3>
                 </button>
-              <input type='hidden' name="escolha" value={filtro[5]}></input>
-              </form>
-              <form method='post' className='formLixeira' onSubmit={deletarCarrinho}>
-                <input type='hidden' name="produto" value={filtro[5]}></input>
-                <button type='submit'><img alt='carrinho' src='/images/lixeira.png'></img></button>
+              <input type='hidden' name="escolha" value={filtro["nome"]}></input>
               </form>
         </div>
               ))}
@@ -657,18 +653,14 @@ useEffect(() => {
       </div>
       <div style={{display: areaPedidos? 'flex' : 'none', flexDirection:"column" }}>
       {pedido.map(filtro => (
-        <div key={filtro[0]} className='divProdutoCarrinho'>   
-              <form className="formProdutoCarrinho"method='post' key={filtro[0]} onSubmit={selecionarProduto}>                
+        <div key={filtro["id"]} className='divProdutoCarrinho'>   
+              <form className="formProdutoCarrinho"method='post' key={filtro["id"]} onSubmit={selecionarProduto}>                
                 <button type='submit'>
-                  <img src={`/images/${filtro[10]}`} alt={filtro[1]}></img>          
-                  <p>{filtro[1]}</p>
-                  <h3>R${filtro[3]}</h3>
+                  {/* <img src={`/images/${filtro[10]}`} alt={filtro[1]}></img>           */}
+                  <p>{filtro["nome"]}</p>
+                  <h3>R${filtro["valor"]}</h3>
                 </button>
-              <input type='hidden' name="escolha" value={filtro[5]}></input>
-              </form>
-              <form method='post' className='formLixeira' onSubmit={deletarCarrinho}>
-                <input type='hidden' name="produto" value={filtro[5]}></input>
-                <button type='submit'><img alt='carrinho' src='/images/lixeira.png'></img></button>
+              <input type='hidden' name="escolha" value={filtro["nome"]}></input>
               </form>
         </div>
               ))}

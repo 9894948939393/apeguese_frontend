@@ -7,6 +7,7 @@ function Perfil() {
 const [mensagem, setMensagem] = useState('');
 const [perfil, setPerfil] = useState('');
 const [mostrarGeralPerfil, setMostrarGeralPerfil] = useState(true);
+const [mostrarAlterarEndereco, setMostrarAlterarEndereco] = useState(false);
 const navigate = useNavigate();
 const location = useLocation();
 const API_URL = process.env.REACT_APP_API_URL;  
@@ -20,6 +21,35 @@ useEffect(() => {
   }, [location.pathname]);
   const navegarParaMain = () => {
     navigate('/app');
+  };
+  const alterarEndereco = (event) => {
+    event.preventDefault(); 
+
+    const formData = new FormData(event.target);
+
+    fetch(`${API_URL}/alterar_endereco`, {
+      method: 'POST',
+      body: formData,
+      mode: 'cors',
+      credentials: 'include'
+    })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        return response.json();
+      })
+      .then(data => {
+        if(data.message === "Sucesso!"){
+            setMostrarAlterarEndereco(false)
+            setMostrarGeralPerfil(true)
+            fetch(`${API_URL}/perfil`)
+        }
+      })
+      .catch(error => {
+        console.error('Erro ao adicionar aos favoritos', error);
+        alert('Erro ao adicionar aos favoritos: ' + error.message);
+      });
   };
   const carregarPerfil = () => {
     fetch(`${API_URL}/perfil`, {
@@ -43,7 +73,10 @@ useEffect(() => {
         console.error('Erro ao buscar perfil:', error);
       });
   };
-
+  const irAlterarEndereco = () => {
+                setMostrarAlterarEndereco(true)
+                setMostrarGeralPerfil(false)
+              }
   return (
     <main>
       <header style={{display: mostrarGeralPerfil? 'flex' : 'none'}}>
@@ -62,41 +95,68 @@ useEffect(() => {
         </div>
       </header>
       <div>
-        <div style={{display: mostrarGeralPerfil? 'flex' : 'none',color:"white", flexDirection:"column"}}>
-          <h1>Sua conta</h1>
-          <div style={{display:"flex"}}>
-          <div>
+          <div style={{display:'flex', flexDirection:"column"}}>
             <button>Alterar email</button>
             <button>Alterar telefone</button>
             <button>Alterar nome de usuário</button>
             <button>Alterar senha</button>
-            <button>Alterar endereço</button>
+            <button onClick={irAlterarEndereco}>Alterar endereço</button>
           </div>
+        <div style={{display: mostrarGeralPerfil? 'flex' : 'none',color:"white", flexDirection:"column"}}>
+          <h1>Sua conta</h1>
+          <div style={{display:"flex"}}>
           {perfil ?(
-              <div key={perfil[0]} className='divInformacoesPerfil'>
+              <div key={perfil["id"]} className='divInformacoesPerfil'>
                 <h3>Nome de usuário</h3>                
-                <p>{perfil[1]}</p>
+                <p>{perfil["usuario"]}</p>
                 <h3>Email</h3>                
-                <p>{perfil[2]}</p>
+                <p>{perfil["email"]}</p>
                 <h3>Telefone</h3>                
-                <p>{perfil[4]}</p>
+                <p>{perfil["telefone"]}</p>
                 <h3>Cep</h3>                
-                <p>{perfil[11]}</p>
+                <p>{perfil["cep"]}</p>
                 <h3>Rua</h3>                
-                <p>{perfil[13]}</p>
+                <p>{perfil["rua"]}</p>
                 <h3>Número</h3>                
-                <p>{perfil[12]}</p>
+                <p>{perfil["numero"]}</p>
                 <h3>Bairro</h3>                
-                <p>{perfil[14]}</p>
+                <p>{perfil["bairro"]}</p>
                 <h3>Cidade</h3>                
-                <p>{perfil[15]}</p>
+                <p>{perfil["cidade"]}</p>
                 <h3>Estado</h3>                
-                <p>{perfil[16]}</p>
+                <p>{perfil["estado"]}</p>
                 <h3>Complemento</h3>                
-                <p>{perfil[17]}</p>
+                <p>{perfil["complemento"]}</p>
               </div>
             ):( 
               <p>Carregando perfil...</p>)}
+          </div>
+          <div style={{display: mostrarAlterarEndereco? 'flex' : 'none'}}>
+            <form onSubmit={alterarEndereco} method='post'>
+                <h2>Alterar o endereço</h2>
+                <label>CEP</label>
+                <input type='number' placeholder='Insira o CEP' name='cep'></input>
+                <br></br>
+                <label>Rua</label> 
+                <input type='text' placeholder='Insira a rua' name='rua'></input>
+                <br></br>
+                <label>Número</label>
+                <input type='number' placeholder='Insira o número' name='numero'></input>
+                <br></br>
+                <label>Bairro</label>
+                <input type='text' placeholder='Insira o bairro' name='bairro'></input>
+                <br></br>
+                <label>Cidade</label>
+                <input type='text' placeholder='Insira a cidade' name='cidade'></input>
+                <br></br>
+                <label>Estado</label>
+                <input type='text' placeholder='Insira o estado' name='estado'></input>
+                <br></br>
+                <label>Complemento</label>
+                <input type='text' placeholder='Insira o complemento' name='complemento'></input>
+                <br></br>
+                <button type='submit'>ALterar endereço</button>
+            </form>
           </div>
         </div>
       </div>
