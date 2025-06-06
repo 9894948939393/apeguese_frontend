@@ -339,7 +339,7 @@ useEffect(() => {
             return response.json();
           })
           .then(data => {
-            if(data.message === "Produto excluido do carrinho com sucesso"){
+            if(data.message === "Produto excluído do carrinho com sucesso"){
               setCarrinho(data.produto)
             }else{
               alert("Erro ao excluir item do carrinho");
