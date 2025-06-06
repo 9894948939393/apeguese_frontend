@@ -78,11 +78,7 @@ useEffect(() => {
   useEffect(() => {
     console.log("Produtos atualizados:", produtos);
   }, [produtos]);
-  const sessao = (event) => {
-
-    event.preventDefault(); 
-
-    const formData = new FormData(event.target);
+  const sessao = () => {
     fetch(`${API_URL}/session`, {
       method: 'GET',
       credentials: 'include', 
