@@ -341,6 +341,7 @@ useEffect(() => {
           .then(data => {
             if(data.message === "Produto excluído do carrinho com sucesso"){
               setCarrinho(data.produto)
+              setTotal(data.valor)
             }else{
               alert("Erro ao excluir item do carrinho");
             }
