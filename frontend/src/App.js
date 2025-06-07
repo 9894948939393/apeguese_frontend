@@ -496,10 +496,10 @@ useEffect(() => {
                 setMostrarProduto(false);
                 setBotaoSacola(false)
                 setMostrarCabecalho(true)
-                setMostrarCarrinho(false);
+                setMostrarCarrinho(true);
                 setBotaoHome(true)
                 setMostrarAlterarEndereco(false)
-                setMostrarFinalizar(true)
+                setMostrarFinalizar(false)
             }
           })
           .catch(error => {
