@@ -80,36 +80,20 @@ useEffect(() => {
     console.log("Produtos atualizados:", produtos);
   }, [produtos]);
   const sessao = () => {
-    fetch(`${API_URL}/session`, {
-      method: 'GET',
-      credentials: 'include', 
-      headers: {
-        'Accept': 'application/json',
-        'Authorization': `Bearer ${token}`
-      }
-    }) 
-      .then(response => {
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        return response.json();
-      })
-      .then(data => {
-        console.log("A sessão é:" + data.sessao)
-        if (data.sessao){
-          setBotaoLogin(false)
-          setBotaoHome(false)
-          setBotaoSacola(true)
-        }else{
-          setBotaoLogin(true)
-          setBotaoHome(false)
-          setBotaoSacola(false)
-      }
-      })
-      .catch(error => {
-        console.error('Erro ao buscar produtos:', error);
-      });
-  };
+    const token = localStorage.getItem('token');
+  
+    if (!token) {
+      console.log("Token não encontrado. Usuário não autenticado.");
+      setBotaoLogin(true);
+      setBotaoHome(false);
+      setBotaoSacola(false);
+      return;
+    }else{
+      setBotaoLogin(false);
+      setBotaoHome(false);
+      setBotaoSacola(true)
+    }
+  
   const navegarParaLogin = () => {
     setMostrarCabecalho(false)
     setMostrarMain(false)
