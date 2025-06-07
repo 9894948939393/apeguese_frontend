@@ -278,7 +278,7 @@ useEffect(() => {
             return response.json();
           })
           .then(data => {
-            if (!data || !Array.isArray(data.produto) || data.produto.length === 0) {
+            if (!data || !Array.isArray(data.pedidos) || data.pedidos.length === 0) {
                 alert("Nenhum pedido encontrado");
                 setMostrarMain(false)
                 setmostrarFiltragem(false);
