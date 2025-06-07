@@ -93,7 +93,7 @@ useEffect(() => {
       setBotaoHome(false);
       setBotaoSacola(true)
     }
-  
+  }
   const navegarParaLogin = () => {
     setMostrarCabecalho(false)
     setMostrarMain(false)
