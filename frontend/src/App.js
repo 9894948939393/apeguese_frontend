@@ -31,6 +31,7 @@ const [areaPedidos, setAreaPedidos] = useState(false)
 const [pedido, setPedido] = useState([]);
 const [barraPedidosCarrinho, setBarraPedidosCarrinho] = useState(false)
 const [botaoLogin, setBotaoLogin] = useState(false)
+const token = localStorage.getItem('token');
 const API_URL = process.env.REACT_APP_API_URL;
   // const imagemURL = `${process.env.REACT_APP_API_URL}/uploads/`
 useEffect(() => {     
@@ -83,7 +84,8 @@ useEffect(() => {
       method: 'GET',
       credentials: 'include', 
       headers: {
-        'Accept': 'application/json'
+        'Accept': 'application/json',
+        'Authorization': `Bearer ${token}`
       }
     }) 
       .then(response => {
@@ -158,7 +160,10 @@ useEffect(() => {
       method: 'POST',
       body: formData,
       mode: 'cors',
-      credentials: 'include'
+      credentials: 'include',
+      headers: {
+        'Authorization': `Bearer ${token}`
+      }
     })
       .then(response => {
         if (!response.ok) {
@@ -193,7 +198,10 @@ useEffect(() => {
       method: 'POST',
       body: formData,
       mode: 'cors',
-      credentials: 'include'
+      credentials: 'include',
+      headers: {
+        'Authorization': `Bearer ${token}`
+      }
     })
       .then(response => {
         if (!response.ok) {
@@ -220,7 +228,10 @@ useEffect(() => {
     fetch(`${API_URL}/mostrar_carrinho`, {
       method: 'GET',
       mode: 'cors',
-      credentials: 'include'
+      credentials: 'include',
+      headers: {
+        'Authorization': `Bearer ${token}`
+      }
     })
       .then(response => {
         if (!response.ok) {
@@ -269,7 +280,10 @@ useEffect(() => {
         fetch(`${API_URL}/mostrar_pedidos`, {
           method: 'GET',
           mode: 'cors',
-          credentials: 'include'
+          credentials: 'include',
+          headers: {
+            'Authorization': `Bearer ${token}`
+          }
         })
           .then(response => {
             if (!response.ok) {
@@ -330,7 +344,10 @@ useEffect(() => {
           method: 'POST',
           body: formData,
           mode: 'cors',
-          credentials: 'include'
+          credentials: 'include',
+          headers: {
+            'Authorization': `Bearer ${token}`
+          }
         })
           .then(response => {
             if (!response.ok) {
@@ -360,7 +377,10 @@ useEffect(() => {
               method: 'POST',
               body: formData,
               mode: 'cors',
-              credentials: 'include'
+              credentials: 'include',
+              headers: {
+                'Authorization': `Bearer ${token}`
+              }
             })
               .then(response => {
                 if (!response.ok) {
@@ -411,7 +431,10 @@ useEffect(() => {
               method: 'POST',
               body: formData,
               mode: 'cors',
-              credentials: 'include'
+              credentials: 'include',
+              headers: {
+                'Authorization': `Bearer ${token}`
+              }
             })
               .then(response => {
                 if (!response.ok) {
@@ -470,7 +493,10 @@ useEffect(() => {
           method: 'POST',
           body: formData,
           mode: 'cors',
-          credentials: 'include'
+          credentials: 'include',
+          headers: {
+            'Authorization': `Bearer ${token}`
+          }
         })
           .then(response => {
             if (!response.ok) {

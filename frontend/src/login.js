@@ -11,12 +11,8 @@ const navigate = useNavigate();
 const location = useLocation();
 const [mostrarLogin, setMostrarLogin] = useState(true);
 const [mostrarCriarConta, setMostrarCriarConta] = useState(false);
+const token = localStorage.getItem('token');
 const API_URL = process.env.REACT_APP_API_URL;
-useEffect(() => {
-    axios.get(`${API_URL}/api/hello`)//conexão com o backend
-      .then(res => setMensagem(res.data.message))
-      .catch(err => console.error(err));
-  }, []);
   const navegarParaMain = () => {
     navigate('/app');
     setMostrarLogin(false)
@@ -32,6 +28,7 @@ useEffect(() => {
 
     fetch(`${API_URL}/login`, {
       method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
       body: formData,
       mode: 'cors',
       credentials: 'include'
@@ -45,6 +42,7 @@ useEffect(() => {
       .then(data => {
         console.log('Resposta do logar:', data);
         if (data && data.message === "Login realizado com sucesso") {
+          localStorage.setItem('token', data.token);
           navegarParaMain()
         } else if (data && data.message === "Usuário ou senha incorretos, tente novamente") {
           alert(data.message);

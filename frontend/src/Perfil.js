@@ -8,6 +8,7 @@ const [mensagem, setMensagem] = useState('');
 const [perfil, setPerfil] = useState('');
 const [mostrarGeralPerfil, setMostrarGeralPerfil] = useState(true);
 const [mostrarAlterarEndereco, setMostrarAlterarEndereco] = useState(false);
+const token = localStorage.getItem('token');
 const navigate = useNavigate();
 const location = useLocation();
 const API_URL = process.env.REACT_APP_API_URL;  
@@ -31,7 +32,10 @@ useEffect(() => {
       method: 'POST',
       body: formData,
       mode: 'cors',
-      credentials: 'include'
+      credentials: 'include',
+      headers: {
+        'Authorization': `Bearer ${token}`
+      }
     })
       .then(response => {
         if (!response.ok) {
@@ -54,7 +58,10 @@ useEffect(() => {
   const carregarPerfil = () => {
     fetch(`${API_URL}/perfil`, {
       method: "GET",
-      credentials: 'include'
+      credentials: 'include',
+      headers: {
+        'Authorization': `Bearer ${token}`
+      }
     }) 
       .then(response => {
         if (!response.ok) {
