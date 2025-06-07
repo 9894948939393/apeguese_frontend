@@ -32,8 +32,10 @@ const [pedido, setPedido] = useState([]);
 const [barraPedidosCarrinho, setBarraPedidosCarrinho] = useState(false)
 const [botaoLogin, setBotaoLogin] = useState(false)
 const token = localStorage.getItem('token');
+// No topo do componente, se API_URL for o base para uploads:
 const API_URL = process.env.REACT_APP_API_URL;
-  // const imagemURL = `${process.env.REACT_APP_API_URL}/uploads/`
+const imagemBaseURL = `${API_URL}/uploads/`;
+
 useEffect(() => {     
   if (location.pathname === '/' || location.pathname === '/app' || location.pathname === '/app_main') {
     setMostrarMain(true);
@@ -409,11 +411,9 @@ useEffect(() => {
           const finalizarCompra = (event) => {
             event.preventDefault(); 
         
-            const formData = new FormData(event.target);
         
             fetch(`${API_URL}/finalizar_pedido`, {
               method: 'POST',
-              body: formData,
               mode: 'cors',
               credentials: 'include',
               headers: {

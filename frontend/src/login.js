@@ -28,7 +28,6 @@ const API_URL = process.env.REACT_APP_API_URL;
 
     fetch(`${API_URL}/login`, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
       body: formData,
       mode: 'cors',
       credentials: 'include'
@@ -42,7 +41,7 @@ const API_URL = process.env.REACT_APP_API_URL;
       .then(data => {
         console.log('Resposta do logar:', data);
         if (data && data.message === "Login realizado com sucesso") {
-          localStorage.setItem('token', data.token);
+          localStorage.setItem('token', data.sessao);
           navegarParaMain()
         } else if (data && data.message === "Usuário ou senha incorretos, tente novamente") {
           alert(data.message);
