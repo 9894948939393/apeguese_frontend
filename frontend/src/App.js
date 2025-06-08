@@ -293,7 +293,6 @@ useEffect(() => {
           })
           .then(data => {
             if (data.message !== "Sucesso") {
-                alert("Nenhum pedido encontrado");
                 setMostrarMain(false)
                 setmostrarFiltragem(false);
                 setMostrarProduto(false);
@@ -317,6 +316,7 @@ useEffect(() => {
                 setAreaPedidos(false)
                 setBarraPedidosCarrinho(true)
                 setBotaoSacola(false)
+                alert("Nenhum pedido encontrado");
 
             }
           })
