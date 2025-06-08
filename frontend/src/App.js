@@ -303,6 +303,8 @@ useEffect(() => {
                 setBotaoHome(true)
                 setBarraPedidosCarrinho(true)
                 setBotaoSacola(false)
+                setAreaPedidos(true)
+                setPedido(data.produto)
 
             } else {
                 setMostrarMain(false)
@@ -312,9 +314,8 @@ useEffect(() => {
                 setMostrarCabecalho(true);
                 setMostrarCarrinho(false);
                 setBotaoHome(true)
-                setAreaPedidos(true)
+                setAreaPedidos(false)
                 setBarraPedidosCarrinho(true)
-                setPedido(data.produto)
                 setBotaoSacola(false)
 
             }
