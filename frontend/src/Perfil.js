@@ -80,6 +80,40 @@ useEffect(() => {
         console.error('Erro ao buscar perfil:', error);
       });
   };
+  const Logout = (event) => {
+    event.preventDefault(); 
+
+    const formData = new FormData(event.target);
+
+    fetch(`${API_URL}/logout`, {
+      method: 'POST',
+      body: formData,
+      mode: 'cors',
+      credentials: 'include',
+      headers: {
+        'Authorization': `Bearer ${token}`
+      }
+    })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        return response.json();
+      })
+      .then(data => {
+        if(data.message === "Sucesso!"){
+            setMostrarAlterarEndereco(false)
+            setMostrarGeralPerfil(false)
+            navegarParaMain()
+        }else{
+          alert("Não foi possível alterar o endereço")
+        }
+      })
+      .catch(error => {
+        console.error('Erro ao adicionar aos favoritos', error);
+        alert('Erro ao adicionar aos favoritos: ' + error.message);
+      });
+  };
   const irAlterarEndereco = () => {
                 setMostrarAlterarEndereco(true)
                 setMostrarGeralPerfil(false)
@@ -107,6 +141,7 @@ useEffect(() => {
             <button>Alterar telefone</button>
             <button>Alterar nome de usuário</button>
             <button>Alterar senha</button>
+            <form><button>Logout</button></form>
             <button onClick={irAlterarEndereco}>Alterar endereço</button>
           </div>
         <div style={{display: mostrarGeralPerfil? 'flex' : 'none',color:"white", flexDirection:"column"}}>
