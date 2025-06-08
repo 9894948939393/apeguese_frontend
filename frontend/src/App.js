@@ -111,6 +111,10 @@ useEffect(() => {
         console.error('Erro ao buscar produtos:', error);
       });
   };
+  const navegarParaLogin = () => {
+    setMostrarCabecalho(false)
+    setMostrarMain(false)
+    navigate('/login'); }
   const selecionarProduto = (event) => {
     event.preventDefault(); 
 
