@@ -303,7 +303,7 @@ useEffect(() => {
                 setBarraPedidosCarrinho(true)
                 setBotaoSacola(false)
                 setAreaPedidos(true)
-                setPedido(data.produto)
+                setPedido(data.pedidos)
 
             } else {
                 setMostrarMain(false)
@@ -683,7 +683,7 @@ useEffect(() => {
               <form className="formProdutoCarrinho"method='post' key={filtro["id"]} onSubmit={selecionarProduto}>                
                 <button type='submit'>
                   {/* <img src={`/images/${filtro[10]}`} alt={filtro[1]}></img>           */}
-                  <p>{filtro["nome"]}</p>
+                  <p>{filtro[""]}</p>
                   <h3>R${filtro["valor"]}</h3>
                 </button>
               <input type='hidden' name="escolha" value={filtro["nome"]}></input>

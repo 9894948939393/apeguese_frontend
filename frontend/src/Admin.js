@@ -12,6 +12,7 @@ function Admin() {
     const location = useLocation();
     const [produtos, setProdutos] = useState([]);
     const [pedidos, setPedidos] = useState([]);
+    const token = localStorage.getItem('token');
     const API_URL = process.env.REACT_APP_API_URL;
     // const imagemURL = `${process.env.REACT_APP_API_URL}/uploads/`
   
@@ -203,14 +204,14 @@ function Admin() {
       <main>
         <div style={{display: mostarPedidos? 'flex' : 'none' }}>
         {pedidos.map(filtro => (
-            <div key={filtro[0]} className='divProduto'>   
-                    <h1>{filtro[3]}</h1>
-                    <h3>Pagante:{filtro[2]}</h3>
-                    <p>Usuário:{filtro[1]}</p>
-                    <p>Valor: {filtro[4]}</p>
-                    <p>Telefone: {filtro[6]}</p>
-                    <p>Endereço: {filtro[7]}</p>
-                    <p>Status: {filtro[5]}</p>
+            <div key={filtro["id"]} className='divProduto'>   
+                    <h1>{filtro["produtos"]}</h1>
+                    <h3>Pagante:{filtro["comprador"]}</h3>
+                    <p>Usuário:{filtro["usuario"]}</p>
+                    <p>Valor: {filtro["valor"]}</p>
+                    <p>Telefone: {filtro["telefone"]}</p>
+                    <p>Endereço: {filtro["endereco"]}</p>
+                    <p>Status: {filtro["status"]}</p>
                     <form method="post">
                         Alterar status pedido:
                         <select name="status" id="">
