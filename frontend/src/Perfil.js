@@ -106,7 +106,7 @@ useEffect(() => {
             setMostrarGeralPerfil(false)
             navegarParaMain()
         }else{
-          alert("Não foi possível alterar o endereço")
+          alert("Não foi possível fazer o logout")
         }
       })
       .catch(error => {
