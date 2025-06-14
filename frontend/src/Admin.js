@@ -206,11 +206,17 @@ function Admin() {
         {pedidos.map(filtro => (
             <div key={filtro["id"]} className='divProduto'>   
                     <h1>{filtro["produtos"]}</h1>
+                    <br></br>
                     <h3>Pagante:{filtro["comprador"]}</h3>
+                    <br></br>
                     <p>Usuário:{filtro["usuario"]}</p>
+                    <br></br>
                     <p>Valor: {filtro["valor"]}</p>
+                    <br></br>
                     <p>Telefone: {filtro["telefone"]}</p>
+                    <br></br>
                     <p>Endereço: {filtro["endereco"]}</p>
+                    <br></br>
                     <p>Status: {filtro["status"]}</p>
                     <form method="post">
                         Alterar status pedido:
