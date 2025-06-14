@@ -122,7 +122,7 @@ useEffect(() => {
     <main>
       <header style={{display: mostrarGeralPerfil? 'flex' : 'none'}}>
       <div className='headerContainer'>
-          <img src="/images/logo_dark.png" alt='club raro'></img>
+          <img src="/images/logo.jpg" alt='club raro'></img>
           <form>
             <input type="search" placeholder='Pesquisar perfil'></input>
             <button type='submit'>
@@ -130,7 +130,6 @@ useEffect(() => {
             </button>
           </form>
           <div className='divBotoes'>
-              <button ><img alt='Carrinho' src='/images/carrinho.png'></img></button>
               <button onClick={navegarParaMain}> <img  alt='Perfil' src='/images/home.png'></img></button>
           </div>
         </div>

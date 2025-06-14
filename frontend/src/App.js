@@ -526,7 +526,7 @@ useEffect(() => {
     <main>
       <header style={{display: mostrarCabecalho? 'flex' : 'none',}}>
         <div className='headerContainer'>
-          <img src="/images/logo_dark.png" alt='club raro'></img>
+          <img src="/images/logo.jpg" alt='club raro'></img>
           <form>
             <input type="search" placeholder='Pesquisar produto'></input>
             <button type='submit'>
