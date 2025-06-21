@@ -268,11 +268,14 @@ function Admin() {
         <div style={{display: mostarPedidos? 'flex' : 'none' }}>
         {pedidos.map(filtro => (
             <div key={filtro["id"]} className='divProduto'>   
+                    <form method="post">
                     <h1>{filtro["produtos"]}</h1>
+                    <input type='hidden' name="produtos" value={filtro["produtos"]}></input>
                     <br></br>
                     <h3>Pagante:{filtro["comprador"]}</h3>
                     <br></br>
                     <p>Usuário:{filtro["usuario"]}</p>
+                    <input type='hidden' name="usuario" value={filtro["usuario"]}></input>
                     <br></br>
                     <p>Valor: {filtro["valor"]}</p>
                     <br></br>
@@ -281,7 +284,6 @@ function Admin() {
                     <p>Endereço: {filtro["endereco"]}</p>
                     <br></br>
                     <p>Status: {filtro["status"]}</p>
-                    <form method="post">
                         Alterar status pedido:
                         <select name="status" id="">
                             <option value="Preparando pedido">Preperando pedido</option>
@@ -289,6 +291,7 @@ function Admin() {
                             <option value="Entregue">Entregue</option>
                             <option value="Cancelado">Cancelado</option>
                         </select>
+                        <button type='submit'>Mudar status</button>
                     </form>
                 </div>
         ))}  
