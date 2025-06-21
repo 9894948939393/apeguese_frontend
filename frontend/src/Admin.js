@@ -75,7 +75,39 @@ function Admin() {
           alert('Erro ao adicio tipo: ' + error.message);
         });
     };
+    const adicionarEstoque = (event) => {
+      event.preventDefault(); 
   
+      const formData = new FormData(event.target);
+  
+      fetch(`${API_URL}/novo_estoque`, {
+        method: 'POST',
+        body: formData,
+        mode: 'cors',
+        credentials: 'include'
+      })
+        .then(response => {
+          if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+          }
+          return response.json();
+        })
+        .then(data => {
+          console.log('Resposta do logar:', data);
+          if (data && data.message === "Estoque criado com sucesso!") {
+            alert(data.message)
+            fetch(`${API_URL}/produtos`)
+          } else if (data && data.message === "Não foi possível criar estoque, tente novamente") {
+            alert(data.message);
+          }else {
+            alert("Erro desconhecido ao adicionar.");
+          }
+        })
+        .catch(error => {
+          console.error('Erro ao adicionar tipo:', error);
+          alert('Erro ao adicio tipo: ' + error.message);
+        });
+    };
     const atualizarPreco = (event) => {
       event.preventDefault(); 
   
@@ -108,7 +140,38 @@ function Admin() {
           alert('Erro ao atualizar tipo: ' + error.message);
         });
     };
-
+    const atualizarEstoque = (event) => {
+      event.preventDefault(); 
+  
+      const formData = new FormData(event.target);
+  
+      fetch(`${API_URL}/atualizar_estoque`, {
+        method: 'POST',
+        body: formData,
+        mode: 'cors',
+        credentials: 'include'
+      })
+        .then(response => {
+          if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+          }
+          return response.json();
+        })
+        .then(data => {
+          console.log('Resposta do logar:', data);
+          if (data && data.message === "Estoque atualizado com sucesso!") {
+            alert(data.message)
+          } else if (data && data.message === "Não foi possível atualizar o estoque, tente novamente") {
+            alert(data.message);
+          }else {
+            alert("Erro desconhecido ao atualizar.");
+          }
+        })
+        .catch(error => {
+          console.error('Erro ao atualizar tipo:', error);
+          alert('Erro ao atualizar tipo: ' + error.message);
+        });
+    };
     useEffect(() => {
       fetch(`${API_URL}/produtos`, {
         method: 'GET',
@@ -245,18 +308,72 @@ function Admin() {
               <br/>
               <label>Cor:</label>
               <br />
-              <input type='text' name="cor" placeholder='Digite aqui a cor' />
+              <fieldset>
+                <legend>Selecione as cores disponíveis:</legend>
+
+                <div>
+                  <input type="checkbox" id="off-white" name="off-white" />
+                  <label for="off-white">off-white</label>
+                </div>
+
+                <div>
+                  <input type="checkbox" id="preta" name="preta" />
+                  <label for="preta">Preta</label>
+                </div>
+                <div>
+                  <input type="checkbox" id="xadrez" name="xadrez" />
+                  <label for="xadrez">Xadrez</label>
+                </div>
+                <div>
+                  <input type="checkbox" id="listrada" name="listrada" />
+                  <label for="listrada">Listrada</label>
+                </div>
+                <div>
+                  <input type="checkbox" id="camel" name="camel" />
+                  <label for="camel">Camel</label>
+                </div>
+                <div>
+                  <input type="checkbox" id="estampa" name="estampa" />
+                  <label for="estampa">Estampa</label>
+                </div>
+                <div>
+                  <input type='text' name="outra1" placeholder='Digite aqui a cor' />
+                </div>
+                <div>
+                  <input type='text' name="outra2" placeholder='Digite aqui a cor' />
+                </div>
+            </fieldset>
               <br />
               <label>Numeração:</label>
               <br />
-              <input type='number' step="0.01" name="numeracao" placeholder='Digite aqui o preço' />
+              <fieldset>
+                <legend>Selecione as numerações disponíveis:</legend>
+
+                <div>
+                  <input type="checkbox" id="36" name="36" />
+                  <label for="36">36</label>
+                </div>
+                <div>
+                  <input type="checkbox" id="38" name="38" />
+                  <label for="38">38</label>
+                </div>
+                <div>
+                  <input type="checkbox" id="40" name="40" />
+                  <label for="40">40</label>
+                </div>
+                <div>
+                  <input type="checkbox" id="42" name="42" />
+                  <label for="42">42</label>
+                </div>
+            </fieldset>
               <br />
               <br></br>
               <select name="genero">
                 <option value="" disabled>Selecione o gênero</option>
-                <option value="masculino">Masculino</option>
-                <option value="feminino">Feminino</option>
-                <option value="unissex">Unissex</option>
+                <option value="bolsa">Bolsa</option>
+                <option value="tenis">Tênis</option>
+                <option value="acessorio">Acessório</option>
+                <option value="outro">Outro</option>
               </select>
               <br />
               <label>Descrição:</label>
@@ -282,9 +399,7 @@ function Admin() {
                   <label>Novo preço:</label>
                   <br />
                   <input type='number' name="preco" placeholder='Digite aqui o novo preço' />
-                  <br />
-                  <label>Filial:</label>
-                  <br />           
+                  <br />          
                   <label>Produto:</label>
                   <br />
                   <select name="produto" id="">
@@ -294,6 +409,30 @@ function Admin() {
                   ))}
                   </select>
                   <button type='submit'>atualizar</button>
+              </form>
+          </div>
+          <div> 
+              <form onSubmit={atualizarEstoque} method="post">
+                  <h3>Atualizar o estoque</h3>
+                  <label>Nova quantidade:</label>
+                  <br />
+                  <input type='number' name="quantidade" placeholder='Digite aqui a quantidade a ser adicionada' />
+                  <br />          
+                  <label>Produto:</label>
+                  <br />
+                  <select name="produto" id="">
+                  <option value="">Selecione o produto</option>
+                  {produtos.map(produto => (
+                      <option key={produto["id"]} value={produto["nome"]}>{produto["nome"]}</option>
+                  ))}
+                  </select>
+                  <br />
+                  <input type='number' name="tamanho" placeholder='Digite aqui a numeracao do produto' />
+                  <br />
+                  <br />
+                  <input type='number' name="cor" placeholder='Digite aqui o valor a ser adicionado' />
+                  <br />
+                  <button type='submit'>Atualizar</button>
               </form>
           </div>
           <div> 

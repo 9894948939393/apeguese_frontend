@@ -26,6 +26,7 @@ const [frete, setFrete] = useState([]);
 const [totalFrete, setTotalFrete] = useState([]);
 const [ruaNumero, setRuaNumero ]= useState([]);
 const [avisoEndereco, setAvisoEndereco ]= useState([]);
+const [avisoCarrinho, setAvisoCarrinho ]= useState([]);
 const [botaoSacola, setBotaoSacola] = useState(false)
 const [areaPedidos, setAreaPedidos] = useState(false)
 const [pedido, setPedido] = useState([]);
@@ -137,6 +138,7 @@ useEffect(() => {
           alert("Nenhum produto encontrado para a categoria");
         } else {
           setProdutosFiltrado(data.produto);
+          setAvisoCarrinho("")
           setmostrarFiltragem(false);
           setMostrarCarrinho(false)
           setMostrarMain(false);
@@ -180,6 +182,8 @@ useEffect(() => {
           setMostrarProduto(false);
           setBotaoHome(false)
           setBotaoSacola(true)
+        }else if(data.message === "Ah, esse produto na numeração e cor que você escolheu está em falta no estoque!"){
+          setAvisoCarrinho(data.message)
         }else{
           alert("Erro ao adicionar ao carrinho");
         }
@@ -526,7 +530,7 @@ useEffect(() => {
     <main>
       <header style={{display: mostrarCabecalho? 'flex' : 'none',}}>
         <div className='headerContainer'>
-          <img src="/images/logo.jpg" alt='club raro'></img>
+          <img src="/images/logo.jpg" alt='Apegue-se'></img>
           <form>
             <input type="search" placeholder='Pesquisar produto'></input>
             <button type='submit'>
@@ -567,6 +571,7 @@ useEffect(() => {
                 <div>
                     <h1>{filtro["nome"]}</h1>
                     <h3>R${filtro["valor"]}</h3>
+                    <h3 style={{color:"red"}}>{avisoCarrinho}</h3>
                     <p>Tamanho:{filtro["numeracao"]}</p>
                     <p>Gênero {filtro["genero"]}</p>
                     <p>Marca: {filtro["marca"]}</p>
@@ -574,6 +579,8 @@ useEffect(() => {
                     <p>Descrição: {filtro["descricao"]}</p>
                     <form method='post' onSubmit={adicionarCarrinho}>
                         <input type='hidden' name="produto" value={filtro["codigo"]}></input>
+                        <input type='text' name="cor" placeholder='Cor'></input>
+                        <input type='Number' name="tamanho" placeholder='tamanho'></input>
                         <button type='submit'><img alt='carrinho' src='/images/carrinho.png' style={{ width:'auto', height:'5vh'}}></img></button>
                     </form>
                     <form method='post' id='formCurtir' onSubmit={adicionarFavoritos}>
