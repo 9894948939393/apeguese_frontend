@@ -374,7 +374,7 @@ function Admin() {
               <select name="genero">
                 <option value="" disabled>Selecione o gênero</option>
                 <option value="bolsa">Bolsa</option>
-                <option value="tenis">Tênis</option>
+                <option value="tenis">Roupas</option>
                 <option value="acessorio">Acessório</option>
                 <option value="outro">Outro</option>
               </select>
@@ -393,6 +393,32 @@ function Admin() {
               <button type='submit' style={{color:"white"}}>Criar</button>
               <br />
             </form>
+          </div>
+          <div> 
+              <form onSubmit={adicionarEstoque} method="post">
+                  <h3>Adicionar estoque</h3>
+                  <label>Quantidade:</label>
+                  <br />
+                  <input type='number' name="quantidade" placeholder='Digite aqui a quantidade' />
+                  <br />          
+                  <label>Produto:</label>
+                  <br />
+                  <select name="produto" id="">
+                  <option value="">Selecione o produto</option>
+                  {produtos.map(produto => (
+                      <option key={produto["id"]} value={produto["nome"]}>{produto["nome"]}</option>
+                  ))}
+                  </select>
+                  <label>Tamanho:</label>
+                  <br />
+                  <input type='number' name="numeracao" placeholder='Digite aqui a numeracao' />
+                  <br />    
+                  <label>Cor:</label>
+                  <br />
+                  <input type='number' name="cor" placeholder='Digite aqui a cor' />
+                  <br />    
+                  <button type='submit'>Criar</button>
+              </form>
           </div>
         </div>
         <div style={{display: editar? 'flex' : 'none' }} className='divEditar'>
