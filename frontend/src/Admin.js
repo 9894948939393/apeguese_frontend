@@ -390,6 +390,7 @@ function Admin() {
               <label>Imagem:</label>
               <br />
               <input type='file' name="imagem" />
+                <br />
               <button type='submit' style={{color:"white"}}>Criar</button>
               <br />
             </form>
@@ -409,13 +410,14 @@ function Admin() {
                       <option key={produto["id"]} value={produto["nome"]}>{produto["nome"]}</option>
                   ))}
                   </select>
+                  
                   <label>Tamanho:</label>
                   <br />
                   <input type='number' name="numeracao" placeholder='Digite aqui a numeracao' />
                   <br />    
                   <label>Cor:</label>
                   <br />
-                  <input type='number' name="cor" placeholder='Digite aqui a cor' />
+                  <input type='text' name="cor" placeholder='Digite aqui a cor' />
                   <br />    
                   <button type='submit'>Criar</button>
               </form>

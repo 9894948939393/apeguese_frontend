@@ -550,7 +550,7 @@ useEffect(() => {
         </div>
       </header>
       <div style={{display: mostrarMain? 'flex' : 'none', flexDirection:"column" }}>
-        <img alt='fundo tênis'src='/images/fundo_tenis.gif' style={{width:"100vw", height:"auto"}}></img>
+        <img alt='fundo tênis'src='/images/fundo.gif' style={{width:"100vw", height:"auto"}}></img>
         <div className=" produtos-container">
             {produtos.map(produto => (
                 <form key={produto[0]} onSubmit={selecionarProduto}>                
