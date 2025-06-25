@@ -526,6 +526,15 @@ useEffect(() => {
             alert('Erro ao adicionar aos favoritos: ' + error.message);
           });
       };
+      function EstoqueForm({ produtos }) {
+  const [produtoSelecionado, setProdutoSelecionado] = useState(null);
+
+  const handleProdutoChange = (e) => {
+    const nome = e.target.value;
+    const produto = produtos.find(p => p.nome === nome);
+    setProdutoSelecionado(produto || null);
+  };};
+
   return (
     <main>
       <header style={{display: mostrarCabecalho? 'flex' : 'none',}}>
@@ -564,42 +573,56 @@ useEffect(() => {
                 ))}
         </div>
       </div>
-      <div style={{display: mostrarProduto? 'flex' : 'none' }}>
-        {produtoFiltrado.map(filtro => (
-            <div key={filtro[0]} className='divProduto'>   
-                {/* <img src={`/images/${filtro["imagem"]}`} alt={filtro[1]}></img>                   */}
-                <div>
-                    <h1>{filtro["nome"]}</h1>
-                    <h3>R${filtro["valor"]}</h3>
-                    <h3 style={{color:"red"}}>{avisoCarrinho}</h3>
-                    <p>Tamanho:{filtro["numeracao"]}</p>
-                    <p>Gênero {filtro["genero"]}</p>
-                    <p>Marca: {filtro["marca"]}</p>
-                    <p>Cor: {filtro["cor"]}</p>
-                    <p>Descrição: {filtro["descricao"]}</p>
-                    <form method='post' onSubmit={adicionarCarrinho}>
-                        <input type='hidden' name="produto" value={filtro["codigo"]}></input>
-                        <select name="cor" id="">
-                          <option value="">Selecione a cor</option>
-                          {filtro["cor"].map(cor => (
-                            <option key={cor} value={cor}>{cor}</option>
-                          ))}
-                        </select>
-                        <select name="numeracao" id="">
-                          <option value="">Selecione o tamanho</option>
-                          {filtro["tamanho"].map(tamanho => (
-                            <option key={tamanho} value={tamanho}>{tamanho}</option>
-                          ))}
-                        </select>
-                        <button type='submit'><img alt='carrinho' src='/images/carrinho.png' style={{ width:'auto', height:'5vh'}}></img></button>
-                    </form>
-                    <form method='post' id='formCurtir' onSubmit={adicionarFavoritos}>
-                        <input type='hidden' name='produto' value={filtro["codigo"]}></input>
-                    </form>
-                </div>
-            </div>
+      <div style={{display: mostrarProduto ? 'flex' : 'none'}}>
+  {produtoFiltrado.map(filtro => {
+    const cores = typeof filtro["cor"] === "string" ? JSON.parse(filtro["cor"]) : filtro["cor"];
+    const tamanhos = typeof filtro["numeracao"] === "string" ? JSON.parse(filtro["numeracao"]) : filtro["numeracao"];
+
+    return (
+      <div key={filtro["codigo"]} className='divProduto'>
+        {/* <img src={`/images/${filtro["imagem"]}`} alt={filtro["nome"]}></img> */}
+        <div>
+          <h1>{filtro["nome"]}</h1>
+          <h3>R${filtro["valor"]}</h3>
+          <h3 style={{color:"red"}}>{avisoCarrinho}</h3>
+          <p>Tamanhos disponíveis: {tamanhos.join(", ")}</p>
+          <p>Gênero: {filtro["genero"]}</p>
+          <p>Marca: {filtro["marca"]}</p>
+          <p>Cores disponíveis: {cores.join(", ")}</p>
+          <p>Descrição: {filtro["descricao"]}</p>
+
+          <form method='post' onSubmit={adicionarCarrinho}>
+            <input type='hidden' name="produto" value={filtro["codigo"]} />
+
+            <select name="cor" required>
+              <option value="">Selecione a cor</option>
+              {cores.map(cor => (
+                <option key={cor} value={cor}>{cor}</option>
               ))}
+            </select>
+
+            <select name="tamanho" required>
+              <option value="">Selecione o tamanho</option>
+              {tamanhos.map(tam => (
+                <option key={tam} value={tam}>{tam}</option>
+              ))}
+            </select>
+
+            <button type='submit'>
+              <img alt='carrinho' src='/images/carrinho.png' style={{ width: 'auto', height: '5vh' }} />
+            </button>
+          </form>
+          <form method='post' id='formCurtir' onSubmit={adicionarFavoritos}>
+            <input type='hidden' name='produto' value={filtro["codigo"]} />
+            <button type='submit'>Curtir</button>
+          </form>
         </div>
+      </div>
+    );
+  })}
+</div>
+
+
     <div style={{display: barraPedidosCarrinho? 'flex' : 'none',}} className='barraCarrinhoPedidos'>
         <form onSubmit={mostrarCarrinho}><button type='submit'>Carrinho</button></form>
         <form onSubmit={mostrarPedido}><button type='submit'>Pedido</button></form>

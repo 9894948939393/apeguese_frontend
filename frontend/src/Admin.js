@@ -263,6 +263,18 @@ function Admin() {
           setCriar(false)
           setEditar(true)
           };
+          const handleProdutoChange = (e) => {
+  const nomeSelecionado = e.target.value;
+  const produto = produtos.find(p => p.nome === nomeSelecionado);
+
+  if (produto) {
+    const cores = typeof produto.cor === "string" ? JSON.parse(produto.cor) : produto.cor;
+    const tamanhos = typeof produto.numeracao === "string" ? JSON.parse(produto.numeracao) : produto.numeracao;
+    setProdutoSelecionado({ ...produto, cor: cores, numeracao: tamanhos });
+  } else {
+    setProdutoSelecionado(null);
+  }
+};
     return (
       <main>
         <div style={{display: mostarPedidos? 'flex' : 'none' }}>
@@ -397,34 +409,45 @@ function Admin() {
           </div>
           <div> 
               <form onSubmit={adicionarEstoque} method="post">
-                  <h3>Adicionar estoque</h3>
-                  <label>Quantidade:</label>
-                  <br />
-                  <input type='number' name="quantidade" placeholder='Digite aqui a quantidade' />
-                  <br />          
-                  <label>Produto:</label>
-                  <br />
-                  <select name="produto" id="">
-                  <option value="">Selecione o produto</option>
-                  {produtos.map(produto => (
-                      <option key={produto["id"]} value={produto["nome"]}>{produto["nome"]}</option>
-                  ))}
-                  </select>
-                  <select name="cor" id="">
-                          <option value="">Selecione a cor</option>
-                          {produtos["cor"].map(cor => (
-                            <option key={cor} value={cor}>{cor}</option>
-                          ))}
-                        </select>
-                        <select name="numeracao" id="">
-                          <option value="">Selecione o tamanho</option>
-                          {produtos["tamanho"].map(tamanho => (
-                            <option key={tamanho} value={tamanho}>{tamanho}</option>
-                          ))}
-                        </select>
-                  <br />    
-                  <button type='submit'>Criar</button>
-              </form>
+  <h3>Adicionar estoque</h3>
+
+  <label>Quantidade:</label>
+  <br />
+  <input type='number' name="quantidade" placeholder='Digite aqui a quantidade' />
+  <br />
+
+  <label>Produto:</label>
+  <br />
+  <select name="produto" onChange={handleProdutoChange}>
+    <option value="">Selecione o produto</option>
+    {produtos.map(produto => (
+      <option key={produto["id"]} value={produto["nome"]}>{produto["nome"]}</option>
+    ))}
+  </select>
+
+  <br />
+  <label>Cor:</label>
+  <br />
+  <select name="cor">
+    <option value="">Selecione a cor</option>
+    {(produtoSelecionado?.cor || []).map(cor => (
+      <option key={cor} value={cor}>{cor}</option>
+    ))}
+  </select>
+
+  <br />
+  <label>Tamanho:</label>
+  <br />
+  <select name="numeracao">
+    <option value="">Selecione o tamanho</option>
+    {(produtoSelecionado?.numeracao || []).map(tam => (
+      <option key={tam} value={tam}>{tam}</option>
+    ))}
+  </select>
+
+  <br />
+  <button type='submit'>Criar</button>
+</form>
           </div>
         </div>
         <div style={{display: editar? 'flex' : 'none' }} className='divEditar'>
