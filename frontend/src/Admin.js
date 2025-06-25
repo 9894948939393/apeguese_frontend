@@ -410,14 +410,18 @@ function Admin() {
                       <option key={produto["id"]} value={produto["nome"]}>{produto["nome"]}</option>
                   ))}
                   </select>
-                  
-                  <label>Tamanho:</label>
-                  <br />
-                  <input type='number' name="numeracao" placeholder='Digite aqui a numeracao' />
-                  <br />    
-                  <label>Cor:</label>
-                  <br />
-                  <input type='text' name="cor" placeholder='Digite aqui a cor' />
+                  <select name="cor" id="">
+                          <option value="">Selecione a cor</option>
+                          {produtos["cor"].map(cor => (
+                            <option key={cor} value={cor}>{cor}</option>
+                          ))}
+                        </select>
+                        <select name="numeracao" id="">
+                          <option value="">Selecione o tamanho</option>
+                          {produtos["tamanho"].map(tamanho => (
+                            <option key={tamanho} value={tamanho}>{tamanho}</option>
+                          ))}
+                        </select>
                   <br />    
                   <button type='submit'>Criar</button>
               </form>
