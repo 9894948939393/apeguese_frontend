@@ -579,7 +579,12 @@ useEffect(() => {
                     <p>Descrição: {filtro["descricao"]}</p>
                     <form method='post' onSubmit={adicionarCarrinho}>
                         <input type='hidden' name="produto" value={filtro["codigo"]}></input>
-                        <input type='text' name="cor" placeholder='Cor'></input>
+                        <select name="produto" id="">
+                  <option value="">Selecione a cor</option>
+                  {filtro["cor"].map(cor => (
+                      <option key={cor["1"]} value={cor["1"]}>{cor["1"]}</option>
+                  ))}
+                  </select>
                         <input type='Number' name="tamanho" placeholder='tamanho'></input>
                         <button type='submit'><img alt='carrinho' src='/images/carrinho.png' style={{ width:'auto', height:'5vh'}}></img></button>
                     </form>
