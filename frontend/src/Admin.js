@@ -14,6 +14,8 @@ function Admin() {
     const [pedidos, setPedidos] = useState([]);
     const token = localStorage.getItem('token');
     const API_URL = process.env.REACT_APP_API_URL;
+    const [produtoSelecionado, setProdutoSelecionado] = useState(null);
+
     // const imagemURL = `${process.env.REACT_APP_API_URL}/uploads/`
   
   useEffect(() => {     
@@ -431,8 +433,8 @@ function Admin() {
   <select name="cor">
     <option value="">Selecione a cor</option>
     {(produtoSelecionado?.cor || []).map(cor => (
-      <option key={cor} value={cor}>{cor}</option>
-    ))}
+  <option key={cor} value={cor}>{cor}</option>
+))}
   </select>
 
   <br />

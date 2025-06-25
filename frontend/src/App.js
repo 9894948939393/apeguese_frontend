@@ -33,7 +33,7 @@ const [pedido, setPedido] = useState([]);
 const [barraPedidosCarrinho, setBarraPedidosCarrinho] = useState(false)
 const [botaoLogin, setBotaoLogin] = useState(false)
 const token = localStorage.getItem('token');
-// No topo do componente, se API_URL for o base para uploads:
+const [produtoSelecionado, setProdutoSelecionado] = useState(null);
 const API_URL = process.env.REACT_APP_API_URL;
 const imagemBaseURL = `${API_URL}/uploads/`;
 
