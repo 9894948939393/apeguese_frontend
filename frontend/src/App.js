@@ -593,7 +593,7 @@ useEffect(() => {
 
           <form method='post' onSubmit={adicionarCarrinho}>
             <input type='hidden' name="produto" value={filtro["codigo"]} />
-
+            <input type='hidden' name="produto_nome" value={filtro["nome"]} />
             <select name="cor" required>
               <option value="">Selecione a cor</option>
               {cores.map(cor => (
