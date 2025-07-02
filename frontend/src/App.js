@@ -279,7 +279,6 @@ useEffect(() => {
     const mostrarPedido = (event) => {
         event.preventDefault(); 
     
-        const formData = new FormData(event.target);
     
         fetch(`${API_URL}/mostrar_pedidos`, {
           method: 'GET',
@@ -296,7 +295,7 @@ useEffect(() => {
             return response.json();
           })
           .then(data => {
-            if (data.message !== "Sucesso") {
+            if (data.message === "Sucesso") {
                 setMostrarMain(false)
                 setmostrarFiltragem(false);
                 setMostrarProduto(false);
