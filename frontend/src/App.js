@@ -307,6 +307,7 @@ useEffect(() => {
                 setBotaoSacola(false)
                 setAreaPedidos(true)
                 setPedido(data.pedidos)
+                console.log(data.pedidos)
 
             } else {
                 setMostrarMain(false)
