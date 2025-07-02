@@ -722,11 +722,12 @@ useEffect(() => {
               <form className="formProdutoCarrinho"method='post' key={filtro["id"]} onSubmit={selecionarProduto}>                
                 <button type='submit'>
                   {/* <img src={`/images/${filtro[10]}`} alt={filtro[1]}></img>           */}
-                  <p>{filtro[""]}</p>
+                  <p>{filtro["nome"]}</p>
                   <h3>R${filtro["valor"]}</h3>
                 </button>
               <input type='hidden' name="escolha" value={filtro["nome"]}></input>
               </form>
+              <p>{filtro["status"]}</p>
         </div>
               ))}
       </div>
